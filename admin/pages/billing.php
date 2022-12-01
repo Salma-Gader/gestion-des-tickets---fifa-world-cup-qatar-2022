@@ -1,6 +1,4 @@
 <?php include'../components/header.php' ?>
-  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-    <?php include'../components/nav-bar.php' ?>
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -16,4 +14,4 @@
           </div>
         </div>
       </div>
-      <?php include'../components/footer.php' ?>
+<?php include'../components/footer.php' ?>
