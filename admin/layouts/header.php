@@ -8,7 +8,7 @@
   <title>
     Soft UI Dashboard by Creative Tim
   </title>
-  <?php include'../components/styles-links.php' ?>
+  <?php include'../components/style-links.php' ?>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
