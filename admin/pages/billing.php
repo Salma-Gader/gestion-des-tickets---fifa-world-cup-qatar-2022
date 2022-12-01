@@ -1,4 +1,4 @@
-<?php include'../components/header.php' ?>
+<?php include'../layouts/header.php' ?>
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -14,4 +14,4 @@
           </div>
         </div>
       </div>
-<?php include'../components/footer.php' ?>
+<?php include'../layouts/footer.php' ?>
