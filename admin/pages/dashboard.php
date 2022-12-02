@@ -782,8 +782,8 @@
                   document.write(new Date().getFullYear())
                 </script>,
                 made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                for a better web.
+                <a href="https://youcode.ma" class="font-weight-bold" target="_blank">Squad 6</a>
+                YouCode School.
               </div>
             </div>
             <div class="col-lg-6">
