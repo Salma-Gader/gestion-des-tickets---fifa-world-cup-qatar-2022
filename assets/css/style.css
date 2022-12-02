@@ -1,0 +1,47 @@
+.btn-signUp {
+    background-color: #8A1538;
+}
+
+.btn-signUp:hover {
+    background-color: white;
+    color: #8A1538 !important;
+}
+
+.text-image {
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10%;
+}
+
+.searsh {
+    width: 70%;
+    height: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 16%;
+    border-radius: 10px !important;
+}
+
+.btn-search {
+    background-color: #8A1538;
+}
+
+.btn-search:hover {
+    color: black !important;
+    background-color: #b59aa1;
+}
+
+.btn-login {
+    border-color: #8A1538 !important;
+}
+
+.btn-login:hover {
+    background-color: #8A1538;
+    color: white !important;
+}
+
+@media screen and (max-width: 600px) {
+    .searsh {
+        width: 95%;
+    }
+}
