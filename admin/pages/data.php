@@ -1,24 +1,26 @@
 <?php
-$tables = [
+$pages = [
     'teams' =>[
                 'title' => 'Teams',
-                'columns' => ['ID' , 'image' ,'NAME' , 'COUNTRY' , 'ACTION'],
-                'data' => [
-                    [
-                        'id' => 1,
-                        'image' => "Morocco.png",
-                        'name' => "Morocco national football team",
-                        'aka' => "The Atlas Lions",
-                        'country' => "Morocco",
-                    ],
-                    [
-                        'id' => 2,
-                        'image' => "Canada.png",
-                        'name' => "Canada men's national soccer team",
-                        'aka' => "",
-                        'country' => "Canada"
-                    ],
-                ]
+                'table' => [
+                    'columns' => ['ID' ,'NAME' , 'COUNTRY' , 'ACTION'],
+                    'row' => [
+                        [
+                            'id' => 1,
+                            'image' => "Morocco.png",
+                            'name' => "Morocco national football team",
+                            'aka' => "The Atlas Lions",
+                            'country' => "Morocco",
+                        ],
+                        [
+                            'id' => 2,
+                            'image' => "Canada.png",
+                            'name' => "Canada men's national soccer team",
+                            'aka' => "",
+                            'country' => "Canada"
+                        ],
+                    ]
+                ],
             ],
     'stadiums' => [
                 'title' => 'Stadiums',
