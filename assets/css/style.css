@@ -16,10 +16,15 @@
 .searsh {
     width: 70%;
     height: 3rem;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 17%;
+    
     margin-top: 16%;
     border-radius: 10px !important;
+    transition: 0.5s;
+}
+.searsh:hover{
+    transform: scale(1.1);
+
 }
 
 .btn-search {
@@ -42,6 +47,42 @@
 
 @media screen and (max-width: 600px) {
     .searsh {
-        width: 95%;
+        left: 5%;
+        width: 90%;
     }
 }
+
+/* second part  */
+a {
+    text-decoration: none
+}
+
+.nav a {
+    color: #f8f8f8 !important;
+}
+
+.bg-danger {
+    background-color: #8A1538 !important;
+}
+
+.card {
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+.login-btn{
+    outline-style: auto;
+outline-width: 0.5px;
+outline-color: #8A1538;
+
+}
+.text-danger{
+    color: #8A1538 !important;
+}
+.head-img{
+    position: relative;
+}
+
