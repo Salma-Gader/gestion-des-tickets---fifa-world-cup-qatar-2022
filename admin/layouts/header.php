@@ -1,3 +1,10 @@
+<?php include'../pages/data.php';
+if(isset($_GET['type'])){
+  if($_GET['type'] == "teams"){ $page = $pages['teams']; }
+  if($_GET['type'] == "stadiums"){ $page = $pages['stadiums']; }
+}else{ die('type not found'); }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
