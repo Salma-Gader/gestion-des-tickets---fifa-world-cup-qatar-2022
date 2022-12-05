@@ -1,4 +1,5 @@
 
+                <?php include'../pages/data.php' ?>
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
@@ -34,7 +35,7 @@
                         </a>
                       </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                       <td>
                         <p class="text-center text-xs text-secondary mb-0">#2</p>
                       </td>
@@ -83,6 +84,6 @@
                           Edit
                         </a>
                       </td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
