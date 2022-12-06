@@ -1,17 +1,3 @@
 <?php include'../layouts/header.php' ?>
-    <div class="container-fluid py-4">
-      <div class="row">
-        <div class="col-12">
-            <div class="card mb-4">
-              <div class="card-header pb-0">
-                <h6><?= $pages['teams']['title'] ?></h6>
-              </div>
-              <div class="card-body px-0 pt-0 pb-2">
-                <div class="table-responsive p-0">
-                  <?php include'../components/table.php' ?>
-                </div>
-              </div>
-            </div>
-        </div>
-      </div>
+  <?php $page ? include'../components/statistics.php' : include'../components/table.php' ?>
 <?php include'../layouts/footer.php' ?>
