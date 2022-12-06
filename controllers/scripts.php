@@ -1,5 +1,5 @@
 <?php
-require_once('C:/xampp/htdocs/Sprint-3/fifa/models/db.php');
+require dirname(__DIR__) . '/models/db.php';
 class crud extends DB
 {
     //insert data - update & delete
