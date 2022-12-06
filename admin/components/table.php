@@ -98,6 +98,33 @@
                       </td>
                     </tr>
                   <?php } ?>
-                <?php } ?>
+                <?php }elseif($_GET['type'] == "reservation"){ ?>
+                  <?php foreach ($page['table']['row'] as $row) { ?>
+                    <tr>
+                      <td>
+                        <p class="text-center text-xs text-secondary mb-0">#<?= $row['id'] ?></p>
+                      </td>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm"><?= $row['user']['first_name']." ".$row['user']['last_name'] ?></h6>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <h6 class="mb-0 text-sm"><?= $row['matche']['first_team']['name']?> - </h6>
+                        <h6 class="mb-0 text-sm"><?= $row['matche']['secound_team']['name'] ?></h6>
+                        <p class="text-xs text-secondary mb-0"><?= $row['date']." in ".$row['matche']['stadium']['name']?></p>
+                      </td>
+                      <td>
+                        <p class="text-xs text-secondary mb-0"><?= $row['quantity'] ?></p>
+                      </td>
+                      <td class="align-middle">
+                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          Edit
+                        </a>
+                      </td>
+                    </tr>
+                  <?php } } ?>
               </tbody>
             </table>
