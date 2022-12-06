@@ -2,6 +2,8 @@
 if(isset($_GET['type'])){
   if($_GET['type'] == "teams"){ $page = $pages['teams']; }
   if($_GET['type'] == "stadiums"){ $page = $pages['stadiums']; }
+  if($_GET['type'] == "matches"){ $page = $pages['matches']; }
+  if($_GET['type'] == "reservation"){ $page = $pages['reservation']; }
 }else{ die('type not found'); }
 
 ?>
