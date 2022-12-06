@@ -46,6 +46,42 @@ $pages = [
             ]
         ]
     ],
+    'matches' => [
+        'title' => 'Matches',
+        'table' => [
+            'columns' => ['ID' , 'NAME' , 'FIRST TEAM' , 'SECOUND TEAM' , 'DATE' , 'STADIUMS' , 'ACTION'],
+            'row' => [
+                [
+                    'id' => 1,
+                    'first_team' => [
+                                        'id' => 1,
+                                        'image' => "al-bayt.png",
+                                        'name' => "Al Bayt Stadium",
+                                        'description' => "Enjoy the warmest of Arab welcomes",
+                                        'location' => "Al Khor City, 35km north of Doha",
+                                        'capacity' => 68,895
+                                    ],
+                    'secound_team' => [
+                                        'id' => 2,
+                                        'image' => "lusail.png",
+                                        'name' => "Lusail Stadium",
+                                        'description' => "Alive with heritage, an icon for the future",
+                                        'location' => "Lusail City, 20km north of central Doha",
+                                        'capacity' => 88,966
+                                    ],
+                    'date' => date(rand()),
+                    'stadium' =>   [
+                                        'id' => 1,
+                                        'image' => "al-bayt.png",
+                                        'name' => "Al Bayt Stadium",
+                                        'description' => "Enjoy the warmest of Arab welcomes",
+                                        'location' => "Al Khor City, 35km north of Doha",
+                                        'capacity' => 68,895
+                                    ],
+                ],
+            ]
+        ]
+    ],
 ]
 
 ?>
