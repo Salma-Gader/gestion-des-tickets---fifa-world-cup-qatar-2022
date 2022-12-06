@@ -82,7 +82,6 @@
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm"><?= $row['first_team']['name'] ?> / </h6>
                             <h6 class="mb-0 text-sm"><?= $row['secound_team']['name'] ?></h6>
-                            <!-- <p class="text-xs text-secondary mb-0"><?= $row['date'] ?></p> -->
                           </div>
                         </div>
                       </td>
