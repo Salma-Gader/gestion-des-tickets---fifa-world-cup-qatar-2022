@@ -1,3 +1,16 @@
+<?php
+ require('../../controllers/scripts.php');
+
+ $insert = new crud();
+ if(isset($_POST["save"])){
+     $name=$_POST["name"];
+     $description=$_POST["description"];
+     $capacity=$_POST["capacity"];
+     $location=$_POST["location"];
+     $data=[$name,$description,$capacity,$location];
+     $insertdta = $insert->action("INSERT INTO stadiums(name,description,capacity,location) VALUES(?,?,?,?)",$data);
+ }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,9 +35,9 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
-  
+
   <?php
-    include('sidebar.php');
+  include('sidebar.php');
   ?>
 
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
@@ -163,7 +176,7 @@
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Location</th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Capacity</th>
-                      <th class="text-secondary opacity-7"></th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"><a href="#modal-stadium" data-bs-toggle="modal">Add</a></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -174,7 +187,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="../assets/img/stadiums/al-bayt.png" class="avatar avatar-xxl me-3" alt="user1">
+                            <img src="../assets/img/all/al-bayt.png" class="avatar avatar-xxl me-3" alt="user1">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">Al Bayt Stadium</h6>
@@ -185,7 +198,7 @@
                       <td>
                         <p class="text-xs text-secondary mb-0">Al Khor City, 35km north of Doha</p>
                       </td>
-                    
+
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold">68,895</span>
                       </td>
@@ -202,7 +215,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="../assets/img/stadiums/lusail.png" class="avatar avatar-xxl me-3" alt="user2">
+                            <img src="../assets/img/all/lusail.png" class="avatar avatar-xxl me-3" alt="user2">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">Lusail Stadium</h6>
@@ -213,7 +226,7 @@
                       <td>
                         <p class="text-xs text-secondary mb-0">Lusail City, 20km north of central Doha</p>
                       </td>
-                     
+
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold">88,966</span>
                       </td>
@@ -230,7 +243,7 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="../assets/img/stadiums/ahmad.png" class="avatar avatar-xxl me-3" alt="user3">
+                            <img src="../assets/img/all/ahmad.png" class="avatar avatar-xxl me-3" alt="user3">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">Ahmad Bin Ali Stadium</h6>
@@ -241,7 +254,7 @@
                       <td>
                         <p class="text-xs text-secondary mb-0">Umm Al Afaei, 20km west of central Doha</p>
                       </td>
-                   
+
                       <td class="align-middle text-center">
                         <span class="text-secondary text-xs font-weight-bold">45,032</span>
                       </td>
@@ -358,6 +371,52 @@
       </div>
     </div>
   </div>
+
+
+  <!-- TASK MODAL -->
+  <div class="modal fade" id="modal-stadium">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form  method="POST" id="form-task">
+          <div class="modal-header">
+            <h5 class="modal-title">Add a stadium</h5>
+            <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
+          </div>
+          <div class="modal-body">
+            <!-- This Input Allows Storing Task Index  -->
+            <input type="hidden" id="task-id">
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" name="name" class="form-control" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+              <textarea class="form-control" rows="2" name="description"></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Photo</label>
+              <input type="file" name="photo" class="form-control" accept=".jpg,.png,.jpeg" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Capacity</label>
+              <input type="text" name="capacity" class="form-control" />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Location</label>
+              <input type="text" name="location" class="form-control" />
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" name="save" class="btn btn-primary task-action-btn" id="task-save-btn">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
