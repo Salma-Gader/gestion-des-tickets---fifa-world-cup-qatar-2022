@@ -49,7 +49,7 @@ $pages = [
     'matches' => [
         'title' => 'Matches',
         'table' => [
-            'columns' => ['ID' , 'NAME' , 'FIRST TEAM' , 'SECOUND TEAM' , 'DATE' , 'STADIUMS' , 'ACTION'],
+            'columns' => ['ID' , 'TEAMS' , 'STADIUM' , 'DATE' , 'ACTION'],
             'row' => [
                 [
                     'id' => 1,
