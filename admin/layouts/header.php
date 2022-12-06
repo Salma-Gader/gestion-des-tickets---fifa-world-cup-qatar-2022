@@ -16,7 +16,7 @@ if(isset($_GET['type'])){
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    <?= $page['title']; ?>
+    <?php if(isset($page)){ echo $page['title']; }else{ echo "statistique";} ?>
   </title>
   <?php include'../components/style-links.php' ?>
 </head>
