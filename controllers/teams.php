@@ -3,6 +3,7 @@ require 'scripts.php';
 
 
 if(isset($_POST['add']))      AddTeams();
+if(isset($_GET['delete']))      DeleteTeams();
 
 
 
@@ -16,6 +17,15 @@ function AddTeams(){
     $insert->action("INSERT INTO teams(name,aka,country) VALUES(?,?,?)",$data);
     header("Location:teams.php");
 
+}
+
+function DeleteTeams(){
+    $insert = new crud();
+    $id = $_GET['delete'];
+    // die($id);
+    // $data=[$name,$aka,$country];
+    $insert->allRows("DELETE FROM `teams` WHERE id = '$id'");
+    header("Location:teams.php");
 }
 
 $display = new crud();
@@ -55,7 +65,7 @@ $result=$display->allRows("SELECT * FROM teams");
                     <table class="table table-striped table-bordered text-center">
                         <thead>
                         <tr>
-                            <th>ID</th>
+                            
                             <th> IMAGE </th>
                             <th> NAME</th>
                             <th>COUNTRY</th>
@@ -66,9 +76,7 @@ $result=$display->allRows("SELECT * FROM teams");
                             
                             <?php foreach ($result as $row) { ?>
                                 <tr>
-                                    <td>
-                                        <p class="text-center text-xs text-secondary mb-0">#<?php echo $row['id']?></p>
-                                    </td>
+                                    
                                     <td>
                                         <div class="d-flex px-2 py-1">
                 
@@ -86,9 +94,9 @@ $result=$display->allRows("SELECT * FROM teams");
                                         <p class="text-xs text-secondary mb-0"><?php echo $row['country']?></p>
                                     </td>
                                     <td class="align-middle">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                                        Edit
-                                        </a>
+                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit">Edit</a>
+                                        <a href="teams.php?delete=<?= $row['id']?>">
+                                        <button type="submit" name="delete" class="btn btn-info">delete</button></a>
                                     </td>
                                 </tr>
                             <?php }?>
