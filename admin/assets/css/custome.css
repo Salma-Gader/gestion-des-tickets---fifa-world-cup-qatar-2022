@@ -1,3 +1,6 @@
 .sidenav{
     z-index: 0 !important;
 }
+.navbar-vertical.navbar-expand-xs .navbar-collapse{
+    height: auto !important;
+}
