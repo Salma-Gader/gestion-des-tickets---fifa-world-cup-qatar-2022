@@ -17,6 +17,11 @@ function AddTeams(){
     header("Location:teams.php");
 
 }
+
+$display = new crud();
+$result=$display->allRows("SELECT * FROM teams");
+
+
 ?>
 
 
@@ -50,14 +55,43 @@ function AddTeams(){
                     <table class="table table-striped table-bordered text-center">
                         <thead>
                         <tr>
-                            <th>id</th>
-                            <th> image</th>
-                            <th> name</th>
-                            <th>aka</th>
-                            <th>country</th>
+                            <th>ID</th>
+                            <th> IMAGE </th>
+                            <th> NAME</th>
+                            <th>COUNTRY</th>
+                            <th>ACTIONS</th>
                         </tr>
                         </thead>
                         <tbody>
+                            
+                            <?php foreach ($result as $row) { ?>
+                                <tr>
+                                    <td>
+                                        <p class="text-center text-xs text-secondary mb-0">#<?php echo $row['id']?></p>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex px-2 py-1">
+                
+                                            <img src="../assets/img/all/lusail.png" class="avatar avatar-xxl me-3" alt="user2">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm"><?php echo $row['name']?></h6>
+                                            <p class="text-xs text-secondary mb-0"><?php echo $row['aka']?></p>
+                                        </div>
+                                    
+                                    </td>
+                                    <td>
+                                        <p class="text-xs text-secondary mb-0"><?php echo $row['country']?></p>
+                                    </td>
+                                    <td class="align-middle">
+                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                                        Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php }?>
 
                         </tbody>
                     </table>
@@ -73,7 +107,7 @@ function AddTeams(){
             <h1 class="modal-title fs-5" id="exampleModalLabel">Add Team</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-                            <form action="teams.php" id="form" method="POST" enctype="multipart/form-data" data-parsley-validate>
+                <form action="teams.php" id="form" method="POST" enctype="multipart/form-data" data-parsley-validate>
                     <div class="modal-body">
                         <div class="container">
                     
@@ -100,11 +134,12 @@ function AddTeams(){
                                 </div>
                         </div>
                     </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" name="add" class="btn btn-info">Save changes</button>
-                </div>
-                            </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" name="add" class="btn btn-info">Save</button>
+                        <button type="submit" name="update" class="btn btn-info">Update</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
