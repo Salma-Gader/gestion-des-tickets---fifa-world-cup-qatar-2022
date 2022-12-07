@@ -1,13 +1,3 @@
-<?php include'../pages/data.php';
-if(isset($_GET['type'])){
-  if($_GET['type'] == "teams"){ $page = $pages['teams']; }
-  elseif($_GET['type'] == "stadiums"){ $page = $pages['stadiums']; }
-  elseif($_GET['type'] == "matches"){ $page = $pages['matches']; }
-  elseif($_GET['type'] == "reservation"){ $page = $pages['reservation']; }
-  else{ header('location:../pages/dashboard.php');}
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
