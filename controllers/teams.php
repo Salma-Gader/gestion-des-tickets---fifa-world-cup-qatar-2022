@@ -2,7 +2,7 @@
 require 'scripts.php';
 
 
-if(isset($_POST['add']))      AddTeams();
+if(isset($_POST['add']))        AddTeams();
 if(isset($_GET['delete']))      DeleteTeams();
 
 
@@ -78,9 +78,9 @@ $result=$display->allRows("SELECT * FROM teams");
                                 <tr>
                                     
                                     <td>
-                                        <div class="d-flex px-2 py-1">
+                                        <div class="">
                 
-                                            <img src="../assets/img/all/lusail.png" class="avatar avatar-xxl me-3" alt="user2">
+                                            <img src="../assets/img/fifa-img.png" class="avatar avatar-xxl me-3" alt="team image " height="50">
                                         </div>
                                     </td>
                                     <td>
@@ -94,9 +94,9 @@ $result=$display->allRows("SELECT * FROM teams");
                                         <p class="text-xs text-secondary mb-0"><?php echo $row['country']?></p>
                                     </td>
                                     <td class="align-middle">
-                                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit">Edit</a>
-                                        <a href="teams.php?delete=<?= $row['id']?>">
-                                        <button type="submit" name="delete" class="btn btn-info">delete</button></a>
+                                        <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit">Edit</a>
+                                        <a href="teams.php?delete=<?= $row['id']?>">delete</a>
+                                       
                                     </td>
                                 </tr>
                             <?php }?>
