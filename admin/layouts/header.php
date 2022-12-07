@@ -7,6 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../assets/css/custome.css">
   <title>
     <?php if(isset($page)){ echo $page['title']; }else{ echo "statistique";} ?>
   </title>
