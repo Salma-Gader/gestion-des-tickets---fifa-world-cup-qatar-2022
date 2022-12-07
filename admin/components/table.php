@@ -1,5 +1,3 @@
-
-            
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
@@ -18,7 +16,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <?php if($_GET['type'] == "teams"){ 
+                      <?php if($page = $pages['teams']){ 
                         foreach ($page['table']['row'] as $row) { ?>
                           <tr>
                             <td>
@@ -46,7 +44,7 @@
                             </td>
                           </tr>
                       <?php }
-                        }elseif($_GET['type'] == "stadiums"){ ?>
+                        }elseif($page = $pages['stadiums']){ ?>
                         <?php foreach ($page['table']['row'] as $row) { ?>
                           <tr>
                             <td>
@@ -77,7 +75,7 @@
                             </td>
                           </tr>
                         <?php } ?>
-                      <?php }elseif($_GET['type'] == "matches"){ ?>
+                      <?php }elseif($page = $pages['matches']){ ?>
                         <?php foreach ($page['table']['row'] as $row) { ?>
                           <tr>
                             <td>
@@ -108,7 +106,7 @@
                             </td>
                           </tr>
                         <?php } ?>
-                      <?php }elseif($_GET['type'] == "reservation"){ ?>
+                      <?php }elseif($page = $pages['reservation']){ ?>
                         <?php foreach ($page['table']['row'] as $row) { ?>
                           <tr>
                             <td>
