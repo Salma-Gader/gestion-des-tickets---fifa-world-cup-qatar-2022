@@ -16,9 +16,11 @@
                 <table class="table align-items-center mb-0">
                     <thead>
                       <tr>
-                        <?php foreach ($page['table']['columns'] as $column) { ?>
-                          <th class="<?php if($column != "NAME" && $column != "ACTION"){echo "text-center ";} ?>text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><?= $column ?></th>
-                        <?php } ?>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">TEAMS</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">DATE</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">STADIUM</th>
+                          <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ACTION</th>
                       </tr>
                     </thead>
                     <tbody>
