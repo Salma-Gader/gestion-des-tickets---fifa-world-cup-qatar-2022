@@ -1,3 +1,4 @@
+<?php include'../pages/data.php';?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
