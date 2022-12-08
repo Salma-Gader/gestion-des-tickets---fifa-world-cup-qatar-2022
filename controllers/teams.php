@@ -94,8 +94,8 @@ $result=$display->allRows("SELECT * FROM teams");
                                         <p class="text-xs text-secondary mb-0"><?php echo $row['country']?></p>
                                     </td>
                                     <td class="align-middle">
-                                        <a href="updateteams.php?update=<?= $row['id']?>" class="btn btn-secondary" >Edit</a>
-                                        <a href="teams.php?delete=<?= $row['id']?>" class="btn btn-secondary">delete</a>
+                                        <a href="updateteams.php?update=<?= $row['id']?>" class="btn" >Edit</a>
+                                        <a href="teams.php?delete=<?= $row['id']?>" class="btn">delete</a>
                                        
                                     </td>
                                 </tr>
