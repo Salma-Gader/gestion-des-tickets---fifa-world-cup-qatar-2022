@@ -2,7 +2,7 @@
 require('../../controllers/scripts.php');
 
 $display = new crud();
-$row=$display->allRows("SELECT * FROM stadiums");
+$result=$display->allRows("SELECT * FROM stadiums");
 //  if(isset($_POST["save"])){
 //      $name=$_POST["name"];
 //      $description=$_POST["description"];
@@ -33,10 +33,10 @@ $row=$display->allRows("SELECT * FROM stadiums");
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($row as $query) { ?>
+                    <?php foreach ($result as $row) { ?>
                     <tr>
                       <td>
-                        <p class="text-center text-xs text-secondary mb-0">#<?php echo $query['id']?></p>
+                        <p class="text-center text-xs text-secondary mb-0">#<?= $row['id']?></p>
                       </td>
                       <td>
                         <div class="d-flex px-2 py-1">
@@ -44,20 +44,20 @@ $row=$display->allRows("SELECT * FROM stadiums");
                             <img src="../assets/img/all/lusail.png" class="avatar avatar-xxl me-3" alt="user2">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm"><?php echo $query['name']?></h6>
-                            <p class="text-xs text-secondary mb-0"><?php echo $query['description']?></p>
+                            <h6 class="mb-0 text-sm"><?= $row['name']?></h6>
+                            <p class="text-xs text-secondary mb-0"><?= $row['description']?></p>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <p class="text-xs text-secondary mb-0"><?php echo $query['location']?></p>
+                        <p class="text-xs text-secondary mb-0"><?= $row['location']?></p>
                       </td>
 
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $query['capacity']?></span>
+                        <span class="text-secondary text-xs font-weight-bold"><?= $row['capacity']?></span>
                       </td>
                       <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        <a href="updateStadiums.php?id=<?= $row['id'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                           Edit
                         </a>
                       </td>
@@ -82,7 +82,7 @@ $row=$display->allRows("SELECT * FROM stadiums");
             </div>
             <div class="modal-body">
               <!-- This Input Allows Storing Task Index  -->
-              <input type="hidden" id="task-id">
+              <input type="hidden" id="">
               <div class="mb-3">
                 <label class="form-label">Name</label>
                 <input type="text" name="name" class="form-control" />
