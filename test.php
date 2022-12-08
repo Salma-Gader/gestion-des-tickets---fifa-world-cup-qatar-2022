@@ -1,15 +1,19 @@
 <?php
-include('controllers/scripts.php');
-include('db.php');$save = new crud();
-if(isset($POST['submit'])) save();
-function save(){
-    $user =$POST['user'];
-    $match =$POST['match'];
-    $stadium =$POST['stadium'];
-    $quantiter =$POST['quantiter'];
-    $date =$POST['date'];
+require('controllers/scripts.php');
+if(isset($_POST['add'])) reserve(); 
+
+function reserve(){
+    
+    $save = new crud();
+    $user =$_POST["user"];
+    $match =$_POST["match"];
+    $stadium =$_POST["stadium"];
+    $quantiter =$_POST["quantiter"];
+    $date =$_POST["date"];
     $data =[$user,$match,$stadium,$quantiter,$date];
-    $save->action("INSERT INTO `reservation`(`id`, `user_id`, `match_id`, `stadiums_id`, `quantity`, `date`) VALUES ('?','?','?','?','?','?')",$data);
+    var_dump($_POST);
+    $save->action("INSERT INTO `reservation`(`user_id`, `match_id`, `stadiums_id`, `quantity`, `date`) VALUES (?,?,?,?,?)",$data);
+    //header('location:index.php');
 }
 
 ?>
@@ -24,28 +28,28 @@ function save(){
     <title>Document</title>
 </head>
 <body>
-    <form action="scripts.php" method="POST">
+    <form action="test.php" method="POST">
     <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label" name="user">user</label>
-  <input  class="form-control" id="exampleFormControlInput1" placeholder="user">
+  <label for="exampleFormControlInput1" class="form-label" >user</label>
+  <input  class="form-control" id="exampleFormControlInput1" name="user" placeholder="user">
 </div>
     <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label" name="match">match</label>
-  <input  class="form-control" id="exampleFormControlInput1" placeholder="match">
+  <label for="exampleFormControlInput1" class="form-label" >match</label>
+  <input  class="form-control" id="exampleFormControlInput1" name="match" placeholder="match">
 </div>
     <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label" name="stadium">stadium</label>
-  <input  class="form-control" id="exampleFormControlInput1" placeholder="stadium">
+  <label for="exampleFormControlInput1" class="form-label" >stadium</label>
+  <input  class="form-control" id="exampleFormControlInput1" name="stadium" placeholder="stadium">
 </div>
     <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label" name="quantiter">quantiter</label>
-  <input  class="form-control" id="exampleFormControlInput1" placeholder="quantiter">
+  <label for="exampleFormControlInput1" class="form-label" >quantiter</label>
+  <input  class="form-control" id="exampleFormControlInput1" name="quantiter" placeholder="quantiter">
 </div>
     <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label" name="date">date</label>
-  <input  class="form-control" id="exampleFormControlInput1" placeholder="date">
+  <label for="exampleFormControlInput1" class="form-label" >date</label>
+  <input  class="form-control" id="exampleFormControlInput1" name="date" placeholder="date">
 </div>
-<input class="btn btn-primary" type="submit" value="Submit" name="submit">
+ <button type="submit" name="add" class="btn btn-primary">submit</button>
     </form>
 </body>
 </html>
