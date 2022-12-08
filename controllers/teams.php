@@ -4,7 +4,6 @@ require 'scripts.php';
 
 if(isset($_POST['add']))        AddTeams();
 if(isset($_GET['delete']))      DeleteTeams();
-if (isset($_POST['update']))    UpdateTeams();
 
 
 function AddTeams(){
@@ -27,16 +26,7 @@ function DeleteTeams(){
     header("Location:teams.php");
 }
 
-function UpdateTeams(){
-    $update = new crud();
-    $id=$_POST["id"];
-    $name=$_POST["name"];
-    $aka=$_POST["aka"];
-    $country=$_POST["country"];
-    $data=[$name,$aka,$country,$id];
-    $update->action("UPDATE teams SET name=?, aka=?, country=?, WHERE id=?",$data);
-    header("Location:teams.php");
-}
+
 
 $display = new crud();
 $result=$display->allRows("SELECT * FROM teams");
@@ -104,8 +94,8 @@ $result=$display->allRows("SELECT * FROM teams");
                                         <p class="text-xs text-secondary mb-0"><?php echo $row['country']?></p>
                                     </td>
                                     <td class="align-middle">
-                                        <a href="updateteams.php?update=<?= $row['id']?>" class="text-secondary font-weight-bold text-xs" >Edit</a>
-                                        <a href="teams.php?delete=<?= $row['id']?>">delete</a>
+                                        <a href="updateteams.php?update=<?= $row['id']?>" class="btn btn-secondary" >Edit</a>
+                                        <a href="teams.php?delete=<?= $row['id']?>" class="btn btn-secondary">delete</a>
                                        
                                     </td>
                                 </tr>
@@ -156,7 +146,6 @@ $result=$display->allRows("SELECT * FROM teams");
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" name="add" class="btn btn-info">Save</button>
-                        <button type="submit" name="update" class="btn btn-info">Update</button>
                     </div>
                 </form>
             </div>

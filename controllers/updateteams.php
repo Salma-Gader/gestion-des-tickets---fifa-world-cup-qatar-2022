@@ -1,11 +1,23 @@
 <?php 
 require 'scripts.php';
 
-$id = $_GET['update'];
-$previous= new crud();
-$result=$previous->oneRow("SELECT * FROM teams WHERE id=?", array($id));
+if (isset($_POST['update']))    {UpdateTeams();}
+if (isset($_GET['update']))    {
+    $id = $_GET['update'];
+    $previous= new crud();
+    $result=$previous->oneRow("SELECT * FROM teams WHERE id=?", array($id));
+}
 // foreach($result as $row);
-
+function UpdateTeams(){
+    $update = new crud();
+    $id = $_POST['update'];
+    $name=$_POST["name"];
+    $aka=$_POST["aka"];
+    $country=$_POST["country"];
+    $data=[$name,$aka,$country,$id];
+    $update->action("UPDATE teams SET name=?, aka=?, country=? WHERE id=?",$data);
+    header("Location:teams.php");
+}
 
 ?>
 <!-- CSS only -->
@@ -21,7 +33,7 @@ $result=$previous->oneRow("SELECT * FROM teams WHERE id=?", array($id));
             
             </div>
             <?php foreach ($result as $row) { ?>
-                <form action="teams.php" id="form" method="POST" enctype="multipart/form-data" >
+                <form action="updateteams.php?update=<?= $_GET['update'] ?>" id="form" method="POST" enctype="multipart/form-data" >
                     <div class="form-body">
                         <div class="container">
                     
@@ -43,7 +55,7 @@ $result=$previous->oneRow("SELECT * FROM teams WHERE id=?", array($id));
                                 <div class="mt-2">
                                     <input class="form-control" name="image" type="file" id="formFile">
                                 </div>
-                                 <button type="submit" name="update" class="mt-4 btn btn-info">Update</button>
+                                 <button type="submit" name="update" value="<?= $row['id'] ?>" class="mt-4 btn btn-info">Update</button>
                                  <a href="teams.php" class="mt-4 btn btn-info">Close</a>
                         </div>
                         <?php } ?>
