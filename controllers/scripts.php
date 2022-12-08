@@ -3,7 +3,7 @@ include('models/db.php');
 class crud extends DB
 {
     //insert data - update & delete
-    function action($query,$data=[])
+    public function action($query,$data=[])
     {
         try {
             $stm = $this->pdo->prepare($query);
@@ -13,17 +13,18 @@ class crud extends DB
         }
     }
     // to fetch one row
-    function oneRow($query,$data)
+    public function oneRow($query,$data)
     {
         try {
             $stm = $this->pdo->prepare($query);
             $stm->execute($data);
+            return $stm->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             "Erreur" . $e->getMessage();
         }
     }
     // to fetch all rows
-    function allRows($query)
+    public function allRows($query)
     {
         try {
             $stm = $this->pdo->prepare($query);
