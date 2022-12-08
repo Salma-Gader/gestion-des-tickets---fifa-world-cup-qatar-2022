@@ -3,8 +3,9 @@ require 'scripts.php';
 
 $id = $_GET['update'];
 $previous= new crud();
-$result=$previous->oneRow("SELECT * FROM teams WHERE id=?",[$id]);
-var_dump($result);
+$result=$previous->oneRow("SELECT * FROM teams WHERE id=?", array($id));
+// foreach($result as $row);
+
 
 ?>
 <!-- CSS only -->
@@ -19,31 +20,33 @@ var_dump($result);
             <h1 class="fs-2" id="exampleModalLabel">Edit Team</h1>
             
             </div>
-                <form action="teams.php" id="form" method="POST" enctype="multipart/form-data" data-parsley-validate>
+            <?php foreach ($result as $row) { ?>
+                <form action="teams.php" id="form" method="POST" enctype="multipart/form-data" >
                     <div class="form-body">
                         <div class="container">
                     
                                 <div class="form-group mt-2">
                                     <input class="form-control" id="id" name="id" type="hidden">
                             
-                                    <input class="form-control" id="name" name="name" placeholder="Team Name" data-parsley-trigger="keyup" required>
+                                    <input class="form-control" id="name" name="name" placeholder="Team Name" required  value="<?= $row['name'] ?>" >
                                 </div>
                                 
                                 <div class="form-group mt-2">
-                                    <input class="form-control" id="aka" name="aka" placeholder="Also Known As"  data-parsley-type="integer" data-parsley-trigger="keyup" required>
+                                    <input class="form-control" id="aka" name="aka" placeholder="Also Known As" value="<?= $row['aka']?>"  required>
                                 </div>
                                 
 
                                 <div class="form-group mt-2">
-                                    <input class="form-control" id="country" name="country" placeholder="country"  data-parsley-type="integer" data-parsley-trigger="keyup" required>
+                                    <input class="form-control" id="country" name="country" placeholder="country" value="<?= $row['country']?>" required>
                                 </div>
                                 
                                 <div class="mt-2">
                                     <input class="form-control" name="image" type="file" id="formFile">
                                 </div>
                                  <button type="submit" name="update" class="mt-4 btn btn-info">Update</button>
-                                 <a href="teams.php" class="btn btn-info">Close</a>
+                                 <a href="teams.php" class="mt-4 btn btn-info">Close</a>
                         </div>
+                        <?php } ?>
                     
                        
                     

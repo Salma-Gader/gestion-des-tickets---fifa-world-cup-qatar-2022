@@ -27,7 +27,7 @@ function DeleteTeams(){
     header("Location:teams.php");
 }
 
-function updateData(){
+function UpdateTeams(){
     $update = new crud();
     $id=$_POST["id"];
     $name=$_POST["name"];
@@ -35,7 +35,7 @@ function updateData(){
     $country=$_POST["country"];
     $data=[$name,$aka,$country,$id];
     $update->action("UPDATE teams SET name=?, aka=?, country=?, WHERE id=?",$data);
-    // header("Location: ../admin/pages/stadiums.php");
+    header("Location:teams.php");
 }
 
 $display = new crud();
