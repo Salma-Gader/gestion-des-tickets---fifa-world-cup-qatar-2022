@@ -4,7 +4,7 @@ require 'scripts.php';
 
 if(isset($_POST['add']))        AddTeams();
 if(isset($_GET['delete']))      DeleteTeams();
-
+if (isset($_POST['update']))    UpdateTeams();
 
 
 function AddTeams(){
@@ -22,10 +22,20 @@ function AddTeams(){
 function DeleteTeams(){
     $insert = new crud();
     $id = $_GET['delete'];
-    // die($id);
-    // $data=[$name,$aka,$country];
+
     $insert->allRows("DELETE FROM `teams` WHERE id = '$id'");
     header("Location:teams.php");
+}
+
+function updateData(){
+    $update = new crud();
+    $id=$_POST["id"];
+    $name=$_POST["name"];
+    $aka=$_POST["aka"];
+    $country=$_POST["country"];
+    $data=[$name,$aka,$country,$id];
+    $update->action("UPDATE teams SET name=?, aka=?, country=?, WHERE id=?",$data);
+    // header("Location: ../admin/pages/stadiums.php");
 }
 
 $display = new crud();
@@ -94,7 +104,7 @@ $result=$display->allRows("SELECT * FROM teams");
                                         <p class="text-xs text-secondary mb-0"><?php echo $row['country']?></p>
                                     </td>
                                     <td class="align-middle">
-                                        <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit">Edit</a>
+                                        <a href="updateteams.php?update=<?= $row['id']?>" class="text-secondary font-weight-bold text-xs" >Edit</a>
                                         <a href="teams.php?delete=<?= $row['id']?>">delete</a>
                                        
                                     </td>
@@ -107,6 +117,7 @@ $result=$display->allRows("SELECT * FROM teams");
             </div>
         </div>
     </div>
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
