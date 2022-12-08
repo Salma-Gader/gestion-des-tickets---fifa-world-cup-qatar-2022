@@ -1,5 +1,5 @@
 <?php
-require dirname(__DIR__) . '/models/db.php';
+include('models/db.php');
 class crud extends DB
 {
     //insert data - update & delete
