@@ -7,16 +7,21 @@ if (isset($_GET['update']))    {
     $previous= new crud();
     $result=$previous->oneRow("SELECT * FROM teams WHERE id=?", array($id));
 }
-// foreach($result as $row);
 function UpdateTeams(){
     $update = new crud();
-    $id = $_POST['update'];
+    $id  = $_POST['update'];
     $name=$_POST["name"];
     $aka=$_POST["aka"];
     $country=$_POST["country"];
-    $data=[$name,$aka,$country,$id];
-    $update->action("UPDATE teams SET name=?, aka=?, country=? WHERE id=?",$data);
-    header("Location:teams.php");
+    $image = $_FILES['image']['name'] ?: $_POST['image'];
+
+        $data=[$image,$name,$aka,$country,$id];
+        $target = "../admin/assets/img/" . $image;
+        move_uploaded_file($_FILES['image']['tmp_name'],$target);
+        $update->action("UPDATE teams SET image=? , name=?, aka=?, country=? WHERE id=?",$data);
+        header("Location:teams.php");
+
+    
 }
 
 ?>
@@ -38,7 +43,7 @@ function UpdateTeams(){
                         <div class="container">
                     
                                 <div class="form-group mt-2">
-                                    <input class="form-control" id="id" name="id" type="hidden">
+                                    <input class="form-control"  name="image" value="<?= $row['image'] ?>" type="hidden">
                             
                                     <input class="form-control" id="name" name="name" placeholder="Team Name" required  value="<?= $row['name'] ?>" >
                                 </div>

@@ -9,11 +9,20 @@ if(isset($_GET['delete']))      DeleteTeams();
 function AddTeams(){
 
     $insert = new crud();
-    $name=$_POST["name"];
-    $aka=$_POST["aka"];
-    $country=$_POST["country"];
-    $data=[$name,$aka,$country];
-    $insert->action("INSERT INTO teams(name,aka,country) VALUES(?,?,?)",$data);
+
+    $image  = ($_FILES['image']['name']);
+    $target = "../admin/assets/img/" . $image;
+
+    $name   =  $_POST["name"];
+    $aka    =  $_POST["aka"];
+    $country=  $_POST["country"];
+    $data   =  [$image,$name,$aka,$country];
+
+    
+
+    $insert->action("INSERT INTO teams(image,name,aka,country) VALUES(?,?,?,?)",$data);
+    move_uploaded_file($_FILES['image']['tmp_name'],$target);
+
     header("Location:teams.php");
 
 }
@@ -80,7 +89,7 @@ $result=$display->allRows("SELECT * FROM teams");
                                     <td>
                                         <div class="">
                 
-                                            <img src="../assets/img/fifa-img.png" class="avatar avatar-xxl me-3" alt="team image " height="50">
+                                            <img src="../admin/assets/img/<?php echo $row['image'] ?>" class="avatar avatar-xxl me-3" alt="team image " height="50">
                                         </div>
                                     </td>
                                     <td>
