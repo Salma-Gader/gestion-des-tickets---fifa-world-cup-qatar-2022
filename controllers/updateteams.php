@@ -18,6 +18,7 @@ function UpdateTeams(){
         $data=[$image,$name,$aka,$country,$id];
         $target = "../admin/assets/img/teams-img/" . $image;
         move_uploaded_file($_FILES['image']['tmp_name'],$target);
+        
         $update->action("UPDATE teams SET image=? , name=?, aka=?, country=? WHERE id=?",$data);
         header("Location:teams.php");
 

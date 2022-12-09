@@ -1,3 +1,47 @@
+<?php
+require('../../controllers/scripts.php');
+
+if(isset($_POST['add']))        AddTeams();
+if(isset($_GET['delete']))      DeleteTeams();
+
+
+function AddTeams(){
+
+    $insert = new crud();
+
+    $image  = ($_FILES['image']['name']);
+    $target = "../assets/img/teams-img/" . $image;
+
+    $name   =  $_POST["name"];
+    $aka    =  $_POST["aka"];
+    $country=  $_POST["country"];
+    $data   =  [$image,$name,$aka,$country];
+
+    
+
+    $insert->action("INSERT INTO teams(image,name,aka,country) VALUES(?,?,?,?)",$data);
+    move_uploaded_file($_FILES['image']['tmp_name'],$target);
+
+    header("Location:teams.php");
+
+}
+
+function DeleteTeams(){
+    $insert = new crud();
+    $id = $_GET['delete'];
+
+    $insert->allRows("DELETE FROM `teams` WHERE id = '$id'");
+    header("Location:teams.php");
+}
+
+
+
+$display = new crud();
+$result=$display->allRows("SELECT * FROM teams");
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -159,87 +203,40 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Country</th>
-                      <th class="text-secondary opacity-7"></th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Country</th>
+                      <th class="text-secondary opacity-7"><button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">Add Team</button></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <p class="text-center text-xs text-secondary mb-0">#1</p>
-                      </td>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets/img/teams/Morocco.png" class="avatar avatar-sm me-3" alt="user1">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Morocco national football team</h6>
-                            <p class="text-xs text-secondary mb-0">The Atlas Lions</p>
-                          </div>
-                        </div>
-                      </td>
-                    
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">Morocco</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p class="text-center text-xs text-secondary mb-0">#2</p>
-                      </td>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets/img/teams/Canada.png" class="avatar avatar-sm me-3" alt="user2">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Canada men's national soccer team</h6>
-                            <p class="text-xs text-secondary mb-0"></p>
-                          </div>
-                        </div>
-                      </td>
-                     
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">Canada</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <p class="text-center text-xs text-secondary mb-0">#3</p>
-                      </td>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets/img/teams/Argentina.png" class="avatar avatar-sm me-3" alt="user3">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Argentina national football team</h6>
-                            <p class="text-xs text-secondary mb-0">La Albiceleste (The White and Sky Blue)</p>
-                          </div>
-                        </div>
-                      </td>
-                   
-                      <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">Argentina</span>
-                      </td>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                          Edit
-                        </a>
-                      </td>
-                    </tr>
+                  <?php foreach ($result as $row) { ?>
+                                <tr>
+                                    
+                                    <td>
+                                        <div class="">
+                
+                                            <img src="../assets/img/teams-img/<?php echo $row['image'] ?>" class="avatar avatar-xxl" alt="team image ">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm"><?php echo $row['name']?></h6>
+                                            <p class="text-xs text-secondary mb-0"><?php echo $row['aka']?></p>
+                                        </div>
+                                    
+                                    </td>
+                                    <td>
+                                        <p class="text-xs text-secondary mb-0"><?php echo $row['country']?></p>
+                                    </td>
+                                    <td class="align-middle">
+                                        <a href="updateteams.php?update=<?= $row['id']?>" class="btn" >Edit</a>
+                                        <a href="teams.php?delete=<?= $row['id']?>" class="btn">delete</a>
+                                       
+                                    </td>
+                                </tr>
+                            <?php }?>
+
                   </tbody>
                 </table>
               </div>
@@ -347,6 +344,50 @@
       </div>
     </div>
   </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Add Team</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+                <form action="teams.php" id="form" method="POST" enctype="multipart/form-data" >
+                    <div class="modal-body">
+                        <div class="container">
+                    
+                                <div class="form-group mt-2">
+                                    <input class="form-control" id="id" name="id" type="hidden">
+                                    <label>name</label>
+                                    <input class="form-control" id="name" name="name" placeholder="Product Name" data-parsley-trigger="keyup" required>
+                                </div>
+                                
+                                <div class="form-group mt-2">
+                                    <label for="exampleFormControlTextarea1">aka</label>
+                                    <input class="form-control" id="aka" name="aka" placeholder="aka"  data-parsley-type="integer" data-parsley-trigger="keyup" required>
+                                </div>
+                                
+
+                                <div class="form-group mt-2">
+                                <label for="exampleFormControlTextarea1">country</label>
+                                    <input class="form-control" id="country" name="country" placeholder="country"  data-parsley-type="integer" data-parsley-trigger="keyup" required>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">image</label>
+                                    <input class="form-control" name="image" type="file" id="formFile">
+                                </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" name="add" class="btn btn-info">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
