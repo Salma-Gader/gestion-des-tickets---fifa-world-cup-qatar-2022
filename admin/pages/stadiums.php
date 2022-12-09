@@ -41,7 +41,7 @@ $result=$display->allRows("SELECT * FROM stadiums");
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="../assets/img/all/lusail.png" class="avatar avatar-xxl me-3" alt="user2">
+                            <img src="../assets/img/all/<?= $row['image'] ?>" class="avatar avatar-xxl me-3" alt="user2">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm"><?= $row['name']?></h6>
@@ -75,7 +75,7 @@ $result=$display->allRows("SELECT * FROM stadiums");
     <div class="modal fade" id="modal-stadium">
       <div class="modal-dialog">
         <div class="modal-content">
-          <form action="../../controllers/stadiumsCrud.php" method="POST" id="form-task">
+          <form action="../../controllers/stadiums.class.php" method="POST" id="form-task" enctype="multipart/form-data">
             <div class="modal-header">
               <h5 class="modal-title">Add a stadium</h5>
               <a href="#" class="btn-close" data-bs-dismiss="modal"></a>

@@ -29,7 +29,7 @@ class crud extends DB
         try {
             $stm = $this->pdo->prepare($query);
             $stm->execute();
-            return $stm->fetchAll();
+            return $stm->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             "Erreur" . $e->getMessage();
         }
