@@ -6,7 +6,6 @@ if(isset($_POST['add']))        AddTeams();
 if(isset($_GET['delete']))      DeleteTeams();
 
 
-
 function AddTeams(){
 
     $insert = new crud();
@@ -22,11 +21,12 @@ function AddTeams(){
 function DeleteTeams(){
     $insert = new crud();
     $id = $_GET['delete'];
-    // die($id);
-    // $data=[$name,$aka,$country];
+
     $insert->allRows("DELETE FROM `teams` WHERE id = '$id'");
     header("Location:teams.php");
 }
+
+
 
 $display = new crud();
 $result=$display->allRows("SELECT * FROM teams");
@@ -94,8 +94,8 @@ $result=$display->allRows("SELECT * FROM teams");
                                         <p class="text-xs text-secondary mb-0"><?php echo $row['country']?></p>
                                     </td>
                                     <td class="align-middle">
-                                        <a href="" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit">Edit</a>
-                                        <a href="teams.php?delete=<?= $row['id']?>">delete</a>
+                                        <a href="updateteams.php?update=<?= $row['id']?>" class="btn" >Edit</a>
+                                        <a href="teams.php?delete=<?= $row['id']?>" class="btn">delete</a>
                                        
                                     </td>
                                 </tr>
@@ -107,6 +107,7 @@ $result=$display->allRows("SELECT * FROM teams");
             </div>
         </div>
     </div>
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -145,7 +146,6 @@ $result=$display->allRows("SELECT * FROM teams");
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" name="add" class="btn btn-info">Save</button>
-                        <button type="submit" name="update" class="btn btn-info">Update</button>
                     </div>
                 </form>
             </div>
