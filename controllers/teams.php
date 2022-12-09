@@ -11,7 +11,7 @@ function AddTeams(){
     $insert = new crud();
 
     $image  = ($_FILES['image']['name']);
-    $target = "../admin/assets/img/" . $image;
+    $target = "../admin/assets/img/teams-img/" . $image;
 
     $name   =  $_POST["name"];
     $aka    =  $_POST["aka"];
@@ -89,7 +89,7 @@ $result=$display->allRows("SELECT * FROM teams");
                                     <td>
                                         <div class="">
                 
-                                            <img src="../admin/assets/img/<?php echo $row['image'] ?>" class="avatar avatar-xxl me-3" alt="team image " height="50">
+                                            <img src="../admin/assets/img/teams-img/<?php echo $row['image'] ?>" class="avatar avatar-xxl me-3" alt="team image " height="50">
                                         </div>
                                     </td>
                                     <td>
@@ -125,7 +125,7 @@ $result=$display->allRows("SELECT * FROM teams");
             <h1 class="modal-title fs-5" id="exampleModalLabel">Add Team</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-                <form action="teams.php" id="form" method="POST" enctype="multipart/form-data" data-parsley-validate>
+                <form action="teams.php" id="form" method="POST" enctype="multipart/form-data" >
                     <div class="modal-body">
                         <div class="container">
                     
