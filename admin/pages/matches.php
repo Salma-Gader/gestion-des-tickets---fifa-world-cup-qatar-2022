@@ -83,7 +83,7 @@ $stadiums = $matches->getStadiums();
           <label for="first_team" class="form-label">First Team</label>
           <select name="first_team" id="first_team" class="form-control">
             <?php foreach ($teams as $team) { ?>
-              <option value="<?= $team['name'] ?>"><?= $team['name'] ?></option>
+              <option value="<?= $team['id'] ?>"><?= $team['name'] ?></option>
             <?php } ?>
           </select>
         </div>
@@ -91,7 +91,7 @@ $stadiums = $matches->getStadiums();
           <label for="second_team" class="form-label">Second Team</label>
           <select name="second_team" id="second_team" class="form-control">
             <?php foreach ($teams as $team) { ?>
-              <option value="<?= $team['name'] ?>"><?= $team['name'] ?></option>
+              <option value="<?= $team['id'] ?>"><?= $team['name'] ?></option>
             <?php } ?>
           </select>
         </div>
@@ -103,7 +103,7 @@ $stadiums = $matches->getStadiums();
           <label for="stadium" class="form-label">Stadium</label>
           <select name="stadium" id="stadium" class="form-control">
             <?php foreach ($stadiums as $stadium) { ?>
-              <option value="<?= $stadium['name'] ?>"><?= $stadium['name'] ?></option>
+              <option value="<?= $stadium['id'] ?>"><?= $stadium['name'] ?></option>
             <?php } ?>
           </select>
         </div>

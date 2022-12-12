@@ -25,7 +25,7 @@ class Matche extends DB {
   }
   public function getTeams() {
     try {
-        $stm = $this->pdo->prepare("SELECT name FROM teams");
+        $stm = $this->pdo->prepare("SELECT id , name FROM teams");
         $stm->execute();
         $result = $stm->fetchAll();
         return $result;
@@ -35,7 +35,7 @@ class Matche extends DB {
   }
   public function getStadiums() {
     try {
-        $stm = $this->pdo->prepare("SELECT name FROM stadiums");
+        $stm = $this->pdo->prepare("SELECT id , name FROM stadiums");
         $stm->execute();
         $result = $stm->fetchAll();
         return $result;
