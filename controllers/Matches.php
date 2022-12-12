@@ -3,28 +3,8 @@
 require dirname(__DIR__) . '/models/db.php';
 
 class Matche extends DB {
-//   private $teams;
-//   private $first_team;
-//   private $secound_team;
-//   private $date;
-//   private $stadium;
-
-//   public function __construct($teams,$first_team,$secound_team,$date,$stadium) {
-//     $this->teams = $teams;
-//     $this->first_team = $first_team;
-//     $this->secound_team = $secound_team;
-//     $this->date = $date;
-//     $this->stadium = $stadium;
-//   }
   public function show() {
     try {
-        // $stm = $this->pdo->prepare("SELECT matches.* , stadiums.* , teams.* ,
-        // stadiums.name stadium_name , teams.name team_name
-        // FROM matches 
-        // INNER JOIN teams
-        // INNER JOIN stadiums 
-        // ON stadiums.id = stadium_id 
-        // AND teams.id = matches.first_team_id OR teams.id = matches.second_team_id");
         $sql = "select matches.* , stadiums.name AS stadium_name ,
         first_team.image AS first_team_image ,
         second_team.image AS second_team_image , 
@@ -60,7 +40,4 @@ class Matche extends DB {
     // 
   }
 }
-
-// $apple = new Matche("Apple","Apple","Apple","Apple","Apple");
-// echo $apple->show();
 ?>
