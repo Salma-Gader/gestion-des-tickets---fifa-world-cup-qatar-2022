@@ -4,6 +4,8 @@ include'../layouts/header.php';
 $page = $pages['matches'];
 $matches = new Matche();
 $result = $matches->show();
+$teams = $matches->getTeams();
+$stadiums = $matches->getStadiums();
 ?>
 <div class="container-fluid py-4">
       <div class="row">
@@ -77,7 +79,34 @@ $result = $matches->show();
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="mb-3">
+          <label for="first_team" class="form-label">First Team</label>
+          <select name="first_team" id="first_team" class="form-control">
+            <?php foreach ($teams as $team) { ?>
+              <option value="<?= $team['name'] ?>"><?= $team['name'] ?></option>
+            <?php } ?>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="second_team" class="form-label">Second Team</label>
+          <select name="second_team" id="second_team" class="form-control">
+            <?php foreach ($teams as $team) { ?>
+              <option value="<?= $team['name'] ?>"><?= $team['name'] ?></option>
+            <?php } ?>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="date" class="form-label">Date</label>
+          <input type="date" class="form-control" id="date">
+        </div>
+        <div class="mb-3">
+          <label for="stadium" class="form-label">Stadium</label>
+          <select name="stadium" id="stadium" class="form-control">
+            <?php foreach ($stadiums as $stadium) { ?>
+              <option value="<?= $stadium['name'] ?>"><?= $stadium['name'] ?></option>
+            <?php } ?>
+          </select>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

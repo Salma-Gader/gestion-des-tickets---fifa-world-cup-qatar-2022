@@ -23,12 +23,22 @@ class Matche extends DB {
         "Erreur" . $e->getMessage();
     }
   }
-  public function create() {
-    // 
+  public function getTeams() {
     try {
-        $data=[$this->teams,$this->first_team,$this->secound_team,$this->date,$this->stadium];
-        $stm = $this->pdo->prepare("INSERT INTO stadiums(teams,first_team,secound_team,date,stadium) VALUES(?,?,?,?,?)");
-        $stm->execute($data);
+        $stm = $this->pdo->prepare("SELECT name FROM teams");
+        $stm->execute();
+        $result = $stm->fetchAll();
+        return $result;
+    } catch (PDOException $e) {
+        "Erreur" . $e->getMessage();
+    }
+  }
+  public function getStadiums() {
+    try {
+        $stm = $this->pdo->prepare("SELECT name FROM stadiums");
+        $stm->execute();
+        $result = $stm->fetchAll();
+        return $result;
     } catch (PDOException $e) {
         "Erreur" . $e->getMessage();
     }
