@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>manage Teams</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+</head>
 <?php
 require 'scripts.php';
 
@@ -9,11 +22,20 @@ if(isset($_GET['delete']))      DeleteTeams();
 function AddTeams(){
 
     $insert = new crud();
-    $name=$_POST["name"];
-    $aka=$_POST["aka"];
-    $country=$_POST["country"];
-    $data=[$name,$aka,$country];
-    $insert->action("INSERT INTO teams(name,aka,country) VALUES(?,?,?)",$data);
+
+    $image  = ($_FILES['image']['name']);
+    $target = "../admin/assets/img/teams-img/" . $image;
+
+    $name   =  $_POST["name"];
+    $aka    =  $_POST["aka"];
+    $country=  $_POST["country"];
+    $data   =  [$image,$name,$aka,$country];
+
+    
+
+    $insert->action("INSERT INTO teams(image,name,aka,country) VALUES(?,?,?,?)",$data);
+    move_uploaded_file($_FILES['image']['tmp_name'],$target);
+
     header("Location:teams.php");
 
 }
@@ -35,19 +57,6 @@ $result=$display->allRows("SELECT * FROM teams");
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>manage Teams</title>
-    <!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
-</head>
 <body>
 
 
@@ -80,7 +89,7 @@ $result=$display->allRows("SELECT * FROM teams");
                                     <td>
                                         <div class="">
                 
-                                            <img src="../assets/img/fifa-img.png" class="avatar avatar-xxl me-3" alt="team image " height="50">
+                                            <img src="../admin/assets/img/teams-img/<?php echo $row['image'] ?>" class="avatar avatar-xxl me-3" alt="team image " height="50">
                                         </div>
                                     </td>
                                     <td>
@@ -116,7 +125,7 @@ $result=$display->allRows("SELECT * FROM teams");
             <h1 class="modal-title fs-5" id="exampleModalLabel">Add Team</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-                <form action="teams.php" id="form" method="POST" enctype="multipart/form-data" data-parsley-validate>
+                <form action="teams.php" id="form" method="POST" enctype="multipart/form-data" >
                     <div class="modal-body">
                         <div class="container">
                     

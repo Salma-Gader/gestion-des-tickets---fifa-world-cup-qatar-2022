@@ -1,5 +1,6 @@
 <?php 
-require 'scripts.php';
+require('../../controllers/scripts.php');
+
 
 if (isset($_POST['update']))    {UpdateTeams();}
 if (isset($_GET['update']))    {
@@ -7,17 +8,24 @@ if (isset($_GET['update']))    {
     $previous= new crud();
     $result=$previous->oneRow("SELECT * FROM teams WHERE id=?", array($id));
 }
-// foreach($result as $row);
 function UpdateTeams(){
     $update = new crud();
-    $id = $_POST['update'];
+    $id  = $_POST['update'];
     $name=$_POST["name"];
     $aka=$_POST["aka"];
     $country=$_POST["country"];
-    $data=[$name,$aka,$country,$id];
-    $update->action("UPDATE teams SET name=?, aka=?, country=? WHERE id=?",$data);
-    header("Location:teams.php");
+    $image = $_FILES['image']['name'] ?: $_POST['image'];
+
+        $data=[$image,$name,$aka,$country,$id];
+        $target = "../assets/img/teams-img/" . $image;
+        move_uploaded_file($_FILES['image']['tmp_name'],$target);
+        
+        $update->action("UPDATE teams SET image=? , name=?, aka=?, country=? WHERE id=?",$data);
+        header("Location:teams.php");
+
+    
 }
+include_once '../layouts/header.php';
 
 ?>
 <!-- CSS only -->
@@ -35,28 +43,31 @@ function UpdateTeams(){
             <?php foreach ($result as $row) { ?>
                 <form action="updateteams.php?update=<?= $_GET['update'] ?>" id="form" method="POST" enctype="multipart/form-data" >
                     <div class="form-body">
-                        <div class="container">
+                        <div class="container  pe-5">
                     
-                                <div class="form-group mt-2">
-                                    <input class="form-control" id="id" name="id" type="hidden">
+                                <div class="form-group mt-2 m-3">
+                                    <input class="form-control"  name="image" value="<?= $row['image'] ?>" type="hidden">
                             
                                     <input class="form-control" id="name" name="name" placeholder="Team Name" required  value="<?= $row['name'] ?>" >
                                 </div>
                                 
-                                <div class="form-group mt-2">
+                                <div class="form-group mt-2 m-3">
                                     <input class="form-control" id="aka" name="aka" placeholder="Also Known As" value="<?= $row['aka']?>"  required>
                                 </div>
                                 
 
-                                <div class="form-group mt-2">
+                                <div class="form-group mt-2 m-3">
                                     <input class="form-control" id="country" name="country" placeholder="country" value="<?= $row['country']?>" required>
                                 </div>
                                 
-                                <div class="mt-2">
+                                <div class="mt-2 m-3">
                                     <input class="form-control" name="image" type="file" id="formFile">
                                 </div>
-                                 <button type="submit" name="update" value="<?= $row['id'] ?>" class="mt-4 btn btn-info">Update</button>
-                                 <a href="teams.php" class="mt-4 btn btn-info">Close</a>
+                                <div class="m-3">
+                                    <button type="submit" name="update" value="<?= $row['id'] ?>" class="mt-4 btn btn-info">Update</button>
+                                 <a href="teams.php" class="mt-4 btn btn-secondary">Close</a>
+                                </div>
+                                 
                         </div>
                         <?php } ?>
                     
@@ -66,3 +77,4 @@ function UpdateTeams(){
             </div>
         </div>
     </div>
+    <?php include '../layouts/footer.php';?>
