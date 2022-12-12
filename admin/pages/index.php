@@ -20,6 +20,8 @@ $result=$display->allRows("SELECT * FROM teams");
     <link rel="stylesheet" href="../assets/css/style.css">
      <!-- icon library -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
    
 </head>
 
@@ -49,7 +51,7 @@ $result=$display->allRows("SELECT * FROM teams");
                 </ul>
                 <span class="me-5">
                     <a class="btn-login btn border border-1 me-3" href="#" style="color: #8A1538 ;">Log In</a>
-                    <a class="btn-signUp  btn btn-danger text-white" href="signout.php">Sign Up</a>
+                    <a class="btn-signUp  btn btn-danger text-white" href="#">Sign Up</a>
                 </span>
             </div>
         </div>
@@ -162,14 +164,14 @@ $result=$display->allRows("SELECT * FROM teams");
             <a href="teams.html" class="text-danger fs-5 ">View All &#10148</a>
         </div>
 
-        <div class="row">
+        <div class="row js-flickity" data-flickity-options='{ "wrapAround": true}'> <!-- Flickity plugin-->
         <?php foreach ($result as $row) { ?>
             <div class="col-md-3">
                 <div class="card mb-4">
                     <img class="card-img-top " height="200" src="../assets/img/teams-img/<?php echo $row['image'] ?>" alt="Card image cap">
                     <div class="card-body">
                     <p class="card-text"><?php echo $row['name']?></p>
-                    <p class="card-text"><?php echo $row['aka']?></p>
+                    <p class="card-text fw-light"><?php echo $row['aka']?></p>
                     <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i><?php echo $row['country']?></p>
                     </div>
                 </div>
@@ -318,10 +320,10 @@ $result=$display->allRows("SELECT * FROM teams");
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">YouTicketscom for iOS</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Mobile site</a></li>
                     <button class="btn btn-default me-5  p-0">
-                        <img class="rounded" src="assets/img/apple.png" width="100%" />
+                        <img class="rounded" src="../assets/img/all/apple.png" width="100%" />
                     </button>
                     <button class="btn btn-default me-5 mt-3  p-0">
-                        <img class="rounded" src="assets/img/googleplay.png" width="100%" />
+                        <img class="rounded" src="../assets/img/all/googleplay.png" width="100%" />
                     </button>
                 </ul>
             </div>
@@ -340,5 +342,6 @@ $result=$display->allRows("SELECT * FROM teams");
             </div>
     </footer>
 </body>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
 </html>
