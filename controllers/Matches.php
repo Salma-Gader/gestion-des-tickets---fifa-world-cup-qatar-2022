@@ -23,12 +23,36 @@ class Matche extends DB {
         "Erreur" . $e->getMessage();
     }
   }
-  public function create() {
-    // 
+  public function add(){
     try {
-        $data=[$this->teams,$this->first_team,$this->secound_team,$this->date,$this->stadium];
-        $stm = $this->pdo->prepare("INSERT INTO stadiums(teams,first_team,secound_team,date,stadium) VALUES(?,?,?,?,?)");
-        $stm->execute($data);
+
+        $first_team_id  = $_POST['first_team'];
+        $second_team_id = $_POST['second_team'];
+        $date           = $_POST['date'];
+        $stadium_id     = $_POST['stadium'];
+
+        $stm = $this->pdo->prepare("INSERT INTO matches(first_team_id , second_team_id , date , stadium_id) VALUES(?,?,?,?)");
+        $stm->execute([$first_team_id,$second_team_id,$date,$stadium_id]);
+    } catch (PDOException $e) {
+        "Erreur" . $e->getMessage();
+    }
+  }
+  public function getTeams() {
+    try {
+        $stm = $this->pdo->prepare("SELECT id , name FROM teams");
+        $stm->execute();
+        $result = $stm->fetchAll();
+        return $result;
+    } catch (PDOException $e) {
+        "Erreur" . $e->getMessage();
+    }
+  }
+  public function getStadiums() {
+    try {
+        $stm = $this->pdo->prepare("SELECT id , name FROM stadiums");
+        $stm->execute();
+        $result = $stm->fetchAll();
+        return $result;
     } catch (PDOException $e) {
         "Erreur" . $e->getMessage();
     }
