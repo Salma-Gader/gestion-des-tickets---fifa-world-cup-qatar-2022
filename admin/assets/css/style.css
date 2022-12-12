@@ -45,3 +45,6 @@
         width: 95%;
     }
 }
+.bg-danger{
+    background-color: #8A1538 !important;
+}

@@ -1,6 +1,5 @@
 <?php
 require('../../controllers/scripts.php');
-
 if(isset($_POST['add']))        AddTeams();
 if(isset($_GET['delete']))      DeleteTeams();
 
@@ -119,6 +118,10 @@ function AddTeams(){
                                 <div class="form-group mt-2">
                                     <label for="exampleFormControlTextarea1">Nickname</label>
                                     <input class="form-control" id="aka" name="aka" placeholder="Nickname"  data-parsley-type="integer" data-parsley-trigger="keyup" required>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label for="exampleFormControlTextarea1">Group</label>
+                                    <input class="form-control" id="group" name="group" placeholder="Group"  data-parsley-type="integer" data-parsley-trigger="keyup" required>
                                 </div>
                                 
 

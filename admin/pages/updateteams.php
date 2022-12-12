@@ -13,14 +13,15 @@ function UpdateTeams(){
     $id  = $_POST['update'];
     $name=$_POST["name"];
     $aka=$_POST["aka"];
+    $group=$_POST["group"];
     $country=$_POST["country"];
     $image = $_FILES['image']['name'] ?: $_POST['image'];
 
-        $data=[$image,$name,$aka,$country,$id];
+        $data=[$image,$name,$aka,$group,$country,$id];
         $target = "../assets/img/teams-img/" . $image;
         move_uploaded_file($_FILES['image']['tmp_name'],$target);
         
-        $update->action("UPDATE teams SET image=? , name=?, aka=?, country=? WHERE id=?",$data);
+        $update->action("UPDATE teams SET image=? , name=?, aka=?, group=? country=? WHERE id=?",$data);
         header("Location:teams.php");
 
     
@@ -53,6 +54,10 @@ include_once '../layouts/header.php';
                                 
                                 <div class="form-group mt-2 m-3">
                                     <input class="form-control" id="aka" name="aka" placeholder="Also Known As" value="<?= $row['aka']?>"  required>
+                                </div>
+
+                                <div class="form-group mt-2 m-3">
+                                    <input class="form-control" id="group" name="group" placeholder="Group" value="<?= $row['group']?>"  required>
                                 </div>
                                 
 
