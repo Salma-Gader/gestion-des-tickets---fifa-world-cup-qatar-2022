@@ -1,6 +1,5 @@
 <?php
 require('../../controllers/scripts.php');
-include'../layouts/header.php';
 
 if(isset($_POST['add']))        AddTeams();
 if(isset($_GET['delete']))      DeleteTeams();
@@ -9,46 +8,53 @@ if(isset($_GET['delete']))      DeleteTeams();
 function AddTeams(){
 
     $insert = new crud();
-
+    
     $image  = ($_FILES['image']['name']);
     $target = "../assets/img/teams-img/" . $image;
-
+    
     $name   =  $_POST["name"];
     $aka    =  $_POST["aka"];
     $country=  $_POST["country"];
     $data   =  [$image,$name,$aka,$country];
-
     
-
+    
+    
     $insert->action("INSERT INTO teams(image,name,aka,country) VALUES(?,?,?,?)",$data);
     move_uploaded_file($_FILES['image']['tmp_name'],$target);
 
     header("Location:teams.php");
-
-}
-
-function DeleteTeams(){
+    
+  }
+  
+  function DeleteTeams(){
     $insert = new crud();
     $id = $_GET['delete'];
-
+    
     $insert->allRows("DELETE FROM `teams` WHERE id = '$id'");
-    header("Location:teams.php");
-}
-
-
-
-$display = new crud();
-$result=$display->allRows("SELECT * FROM teams");
-
-
-?>
+    // header("Location:teams.php");
+  }
+  
+  
+  
+  $display = new crud();
+  $result=$display->allRows("SELECT * FROM teams");
+  
+  
+  include_once '../layouts/header.php';
+  ?>
     <div class="container-fluid py-4">
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
               <h6>Teams</h6>
+              <div class="container"><!-- Button trigger modal -->
+              <button type="button" class="btn btn-sm btn-primary float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add Team
+                </button>
+              </div>
             </div>
+            
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
@@ -57,17 +63,14 @@ $result=$display->allRows("SELECT * FROM teams");
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Country</th>
-                      <th class="text-secondary opacity-7"><button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">Add Team</button></th>
                     </tr>
                   </thead>
                   <tbody>
                   <?php foreach ($result as $row) { ?>
-                                <tr>
-                                    
+                                <tr> 
                                     <td>
                                         <div class="">
-                
-                                            <img src="../assets/img/teams-img/<?php echo $row['image'] ?>" class="avatar avatar-xxl" alt="team image ">
+                                            <img src="../assets/img/teams-img/<?php echo $row['image'] ?>" class="ms-3 rounded " alt="team image " height="100" width="200">
                                         </div>
                                     </td>
                                     <td>
@@ -75,10 +78,9 @@ $result=$display->allRows("SELECT * FROM teams");
                                             <h6 class="mb-0 text-sm"><?php echo $row['name']?></h6>
                                             <p class="text-xs text-secondary mb-0"><?php echo $row['aka']?></p>
                                         </div>
-                                    
                                     </td>
                                     <td>
-                                        <p class="text-xs text-secondary mb-0"><?php echo $row['country']?></p>
+                                        <p class="text-m text-secondary mb-0 ms-3 "><?php echo $row['country']?></p>
                                     </td>
                                     <td class="align-middle">
                                         <a href="updateteams.php?update=<?= $row['id']?>" class="btn" >Edit</a>
@@ -115,8 +117,8 @@ $result=$display->allRows("SELECT * FROM teams");
                                 </div>
                                 
                                 <div class="form-group mt-2">
-                                    <label for="exampleFormControlTextarea1">aka</label>
-                                    <input class="form-control" id="aka" name="aka" placeholder="aka"  data-parsley-type="integer" data-parsley-trigger="keyup" required>
+                                    <label for="exampleFormControlTextarea1">Nickname</label>
+                                    <input class="form-control" id="aka" name="aka" placeholder="Nickname"  data-parsley-type="integer" data-parsley-trigger="keyup" required>
                                 </div>
                                 
 
@@ -133,11 +135,12 @@ $result=$display->allRows("SELECT * FROM teams");
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" name="add" class="btn btn-info">Save</button>
+                        <button type="submit" name="add" class="btn btn-primary">Save</button>
+                        
                     </div>
                 </form>
             </div>
         </div>
     </div>
     
-<?php include'../layouts/footer.php' ?>
+<?php include '../layouts/footer.php';?>
