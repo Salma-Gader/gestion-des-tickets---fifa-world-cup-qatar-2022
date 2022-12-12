@@ -58,7 +58,7 @@ $result=$display->allRows("SELECT * FROM teams");
     <!-- header image -->
     <section>
 
-        <img src="../assets/img/all/" class="position-absolute   groups-img img-fluid mx-auto d-block" height="30px" width="100%">
+        <img src="../assets/img/all/fifa-img.png" class="position-absolute   groups-img img-fluid mx-auto d-block" height="30px" width="100%">
         <img src="../assets/img/all/text-image.png" width="70%" class="position-relative text-image">
         <div class="searsh input-group border rounded border-4 border-dark">
             <input type="search" class="form-control rounded-start" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
