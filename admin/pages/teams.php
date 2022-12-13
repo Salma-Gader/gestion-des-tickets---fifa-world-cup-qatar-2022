@@ -1,6 +1,5 @@
 <?php
 require('../../controllers/scripts.php');
-
 if(isset($_POST['add']))        AddTeams();
 if(isset($_GET['delete']))      DeleteTeams();
 
@@ -8,15 +7,14 @@ if(isset($_GET['delete']))      DeleteTeams();
 function AddTeams(){
 
     $insert = new crud();
-    
     $image  = ($_FILES['image']['name']);
     $target = "../assets/img/teams-img/" . $image;
     
     $name   =  $_POST["name"];
     $aka    =  $_POST["aka"];
     $country=  $_POST["country"];
+    // $group  =  $_POST["group"];
     $data   =  [$image,$name,$aka,$country];
-    
     
     
     $insert->action("INSERT INTO teams(image,name,aka,country) VALUES(?,?,?,?)",$data);
@@ -88,7 +86,7 @@ function AddTeams(){
                                        
                                     </td>
                                 </tr>
-                            <?php }?>
+                    <?php }?>
 
                   </tbody>
                 </table>
@@ -118,7 +116,11 @@ function AddTeams(){
                                 
                                 <div class="form-group mt-2">
                                     <label for="exampleFormControlTextarea1">Nickname</label>
-                                    <input class="form-control" id="aka" name="aka" placeholder="Nickname"  data-parsley-type="integer" data-parsley-trigger="keyup" required>
+                                    <input class="form-control" id="aka" name="aka" placeholder="Nickname"  data-parsley-trigger="keyup" required>
+                                </div>
+                                <div class="form-group mt-2">
+                                    <label for="exampleFormControlTextarea1">Group</label>
+                                    <input class="form-control" id="group" name="group" placeholder="Group" >
                                 </div>
                                 
 
