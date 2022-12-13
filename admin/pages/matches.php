@@ -6,8 +6,8 @@ $matches = new Matche();
 $result = $matches->show();
 $teams = $matches->getTeams();
 $stadiums = $matches->getStadiums();
-if(isset($_POST['save'])) { $matches->add();}
-if(isset($_POST['delete_matche'])) { $matches->delete(); }
+if(isset($_POST['save'])) { $matches->add();$result = $matches->show(); }
+if(isset($_POST['delete_matche'])) { $matches->delete();$result = $matches->show(); }
 ?>
 <div class="container-fluid py-4">
       <div class="row">
