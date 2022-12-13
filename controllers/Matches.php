@@ -57,9 +57,28 @@ class Matche extends DB {
     }
   }
   public function edit() {
-    // 
+    try {
+      $id = $_GET['id'];
+        $stm = $this->pdo->prepare("select matches.* , stadiums.name AS stadium_name ,
+        first_team.image AS first_team_image ,
+        second_team.image AS second_team_image , 
+        first_team.name AS first_team_name ,
+        second_team.name AS second_team_name 
+        FROM matches 
+        JOIN teams first_team ON matches.first_team_id = first_team.id 
+        JOIN teams second_team ON matches.second_team_id = second_team.id 
+        JOIN stadiums ON matches.stadium_id = stadiums.id WHERE matches.id = '$id'");
+        $stm->execute();
+        $result = $stm->fetch();
+        return $result;
+    } catch (PDOException $e) {
+        "Erreur" . $e->getMessage();
+    }
   }
   public function update() {
+    // 
+  }
+  public function delete() {
     // 
   }
 }

@@ -57,7 +57,7 @@ if(isset($_POST['save'])) { $matches->add();}
                               <p class="text-xs text-secondary mb-0"><?= $row['stadium_name'] ?></p>
                             </td>
                             <td class="align-middle">
-                              <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                              <a href="edit-matches.php?id=<?= $row['id'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                                 Edit
                               </a>
                             </td>
