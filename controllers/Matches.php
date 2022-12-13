@@ -13,8 +13,7 @@ class Matche extends DB {
         FROM matches 
         JOIN teams first_team ON matches.first_team_id = first_team.id 
         JOIN teams second_team ON matches.second_team_id = second_team.id 
-        JOIN stadiums ON matches.stadium_id = stadiums.id 
-        LIMIT 1;";
+        JOIN stadiums ON matches.stadium_id = stadiums.id";
         $stm = $this->pdo->prepare($sql);
         $stm->execute();
         $result = $stm->fetchAll();
