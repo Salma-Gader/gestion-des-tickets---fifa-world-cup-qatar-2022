@@ -30,7 +30,7 @@ $result=$display->allRows("SELECT * FROM teams");
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid d-flex justify-content-between">
-            <a class="navbar-brand fw-bold ms-5" href="#" style="color:#8A1538 ;">YouTickets.com</a>
+            <a class="navbar-brand fw-bold ms-5" href="index.php" style="color:#8A1538 ;">YouTickets.com</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -43,7 +43,7 @@ $result=$display->allRows("SELECT * FROM teams");
                         <a class="nav-link active me-5 fw-bold" aria-current="page" href="#">News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active me-5 fw-bold" href="#">Teams</a>
+                        <a class="nav-link active me-5 fw-bold" href="allTeams.php">Teams</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active fw-bold" href="#">Contact</a>
@@ -161,7 +161,7 @@ $result=$display->allRows("SELECT * FROM teams");
     <section class="container">
         <div class="d-flex justify-content-between mt-4 mb-4">
             <h2>Browse National Teams</h2>
-            <a href="teams.html" class="text-danger fs-5 ">View All &#10148</a>
+            <a href="allTeams.php" class="text-danger fs-5 ">View All &#10148</a>
         </div>
 
         <div class="row js-flickity" data-flickity-options='{ "wrapAround": true}'> <!-- Flickity plugin-->
