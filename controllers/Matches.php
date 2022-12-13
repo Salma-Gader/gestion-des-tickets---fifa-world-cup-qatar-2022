@@ -1,6 +1,6 @@
 <?php
 
-require dirname(__DIR__) . '/models/db.php';
+ require dirname(__DIR__) . '/models/db.php';
 
 class Matche extends DB {
   public $id;
