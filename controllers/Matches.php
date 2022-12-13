@@ -3,6 +3,7 @@
 require dirname(__DIR__) . '/models/db.php';
 
 class Matche extends DB {
+  public $id;
   public function show() {
     try {
         $sql = "select matches.* , stadiums.name AS stadium_name ,
@@ -58,7 +59,7 @@ class Matche extends DB {
   }
   public function edit() {
     try {
-      $id = $_GET['id'];
+      $this->id = $_GET['id'];
         $stm = $this->pdo->prepare("select matches.* , stadiums.name AS stadium_name ,
         first_team.image AS first_team_image ,
         second_team.image AS second_team_image , 
@@ -67,7 +68,7 @@ class Matche extends DB {
         FROM matches 
         JOIN teams first_team ON matches.first_team_id = first_team.id 
         JOIN teams second_team ON matches.second_team_id = second_team.id 
-        JOIN stadiums ON matches.stadium_id = stadiums.id WHERE matches.id = '$id'");
+        JOIN stadiums ON matches.stadium_id = stadiums.id WHERE matches.id = '$this->id'");
         $stm->execute();
         $result = $stm->fetch();
         return $result;
@@ -76,7 +77,19 @@ class Matche extends DB {
     }
   }
   public function update() {
-    // 
+    try {
+
+        $first_team_id  = $_POST['first_team'];
+        $second_team_id = $_POST['second_team'];
+        $date           = $_POST['date'];
+        $stadium_id     = $_POST['stadium'];
+        $id = $this->id;
+
+        $stm = $this->pdo->prepare("UPDATE matches SET first_team_id=?, second_team_id=?, date=?, stadium_id=? WHERE id=?");
+        $stm->execute([$first_team_id,$second_team_id,$date,$stadium_id,$id]);
+    } catch (PDOException $e) {
+        "Erreur" . $e->getMessage();
+    }
   }
   public function delete() {
     // 
