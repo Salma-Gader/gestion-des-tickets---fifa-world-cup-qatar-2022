@@ -51,8 +51,8 @@ $result=$display->allRows("SELECT * FROM teams");
                     </li>
                 </ul>
                 <span class="me-5">
-                    <a class="btn-login btn border border-1 me-3" href="#" style="color: #8A1538 ;">Log In</a>
-                    <a class="btn-signUp  btn btn-danger text-white" href="#">Sign Up</a>
+                    <a class="btn-login btn border border-1 me-3" href="login.php" style="color: #8A1538 ;">Log In</a>
+                    <a class="btn-signUp  btn btn-danger text-white" href="signup.php">Sign Up</a>
                 </span>
             </div>
         </div>
