@@ -4,6 +4,8 @@ require '../../controllers/scripts.php';
 $display = new crud();
 $result=$display->allRows("SELECT * FROM teams");
 
+
+
 ?>
 <!-- landing page  -->
 <!DOCTYPE html>
@@ -212,61 +214,36 @@ $result=$display->allRows("SELECT * FROM teams");
         </div>
     </section>
     <!-- Stadiums -->
+    
     <section class="container">
+       
         <div class="d-flex justify-content-between mt-4 mb-4">
             <h2>Browse Available Stadiums</h2>
             <a href="stadiums.html" class="text-danger fs-5 ">View All &#10148</a>
         </div>
-
-            <div class="row mb-4">
-                <div class="col-md-3 ">
-                    <div class="card mb-4">
-                        <img class="card-img-top" src="../assets/img/Stad1.png" alt="Card image cap">
-                        <div class="card-body">
-                        <p class="card-text">Ahmad Bin Ali Stadium</p>
-                        <p class="card-text">capacity : 45,032 </p>
-                        <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>Next to the Mall of Qatar</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card mb-4">
-                    <img class="card-img-top" src="../assets/img/Stad2.png" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">Al Bayt Stadium</p>
-                        <p class="card-text">Capacity : 68,895 </p>
-                        <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>Near Al Khor</p>               
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="card mb-4">
-                    <img class="card-img-top" src="../assets/img/Stad3.png" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">Al Janoub Stadium</p>
-                        <p class="card-text">Capacity : 44,325 </p>
-                        <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>Al Wakrah</p>                
-                    </div>
-                </div>
-            </div>
         
-            <div class="col-md-3">
-                <div class="card mb-4">
-                    <img class="card-img-top" src="../assets/img/Stad4.png" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">Al Thumama Stadium</p>
-                        <p class="card-text">Capacity : 44,400 </p>
-                        <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>Al Thumama</p>
+
+            <div class="row js-flickity" data-flickity-options='{ "wrapAround": true}'>
+            <?php 
+        $display = new crud();
+        $result=$display->allRows("SELECT * FROM stadiums");
+        foreach ($result as $row) { ?>    
+                <div class="col-md-3 ">
+                    <div class="card mb-4 "height="auto">
+                        <img class="card-img-top" height="250" src="../assets/img/all/<?= $row['image'] ?>" alt="Card image cap">
+                        <div class="card-body">
+                        <p class="card-text"><?= $row['name']?></p>
+                        <p class="card-text">Capacity : <?= $row['capacity']?></p>
+                        <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"> <?= $row['location']?> </i></p>
                     </div>
                 </div>
             </div>
+        <?php } ?>
+           
+    </section> 
 
-        </div>
-    </section>
     <!-- footer -->
-    <footer class="bg-danger text-white p-5 ">
+    <footer class="bg-danger text-white p-5 mt-5">
 
 
         <div class="row d-flex justify-content-around">
@@ -343,5 +320,4 @@ $result=$display->allRows("SELECT * FROM teams");
     </footer>
 </body>
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-
 </html>
