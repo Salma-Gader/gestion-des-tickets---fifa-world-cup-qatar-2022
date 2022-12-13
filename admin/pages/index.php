@@ -154,11 +154,11 @@ $result=$display->allRows("SELECT * FROM teams");
             </div>
         </div>
     </section>
-    <!--  groups  -->
-    <section class="col-12 d-flex justify-content-center bg-danger">
-        <img src="../assets/img/FIFA-World-Cup-Qatar-2022-Final-groups.jpg" class="container groups-img img-fluid mx-auto d-block" alt="image">
+    <!-- Way To The Final -->
+    <section class="col-12 d-flex justify-content-center mb-5">
+        <img src="../assets/img/all/Way to final.png" class=" groups-img img-fluid mx-auto d-block" alt="image">
     </section>
-
+    
     <!--Teams -->
     <section class="container">
         <div class="d-flex justify-content-between mt-4 mb-4">
@@ -213,6 +213,13 @@ $result=$display->allRows("SELECT * FROM teams");
             </div> -->
         </div>
     </section>
+ <!--  groups  -->
+ <section class="col-12 d-flex justify-content-center bg-danger mt-5 mb-5">
+        <img src="../assets/img/FIFA-World-Cup-Qatar-2022-Final-groups.jpg" class="container groups-img img-fluid mx-auto d-block" alt="image">
+    </section>
+
+
+
     <!-- Stadiums -->
     
     <section class="container">

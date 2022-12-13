@@ -110,27 +110,22 @@ function AddTeams(){
                     
                                 <div class="form-group mt-2">
                                     <input class="form-control" id="id" name="id" type="hidden">
-                                    <label>name</label>
-                                    <input class="form-control" id="name" name="name" placeholder="Product Name" data-parsley-trigger="keyup" required>
+                                    <label>NAME</label>
+                                    <input class="form-control" id="name" name="name" placeholder="Team Name" data-parsley-trigger="keyup" required>
                                 </div>
                                 
                                 <div class="form-group mt-2">
-                                    <label for="exampleFormControlTextarea1">Nickname</label>
+                                    <label for="exampleFormControlTextarea1">NICKNAME</label>
                                     <input class="form-control" id="aka" name="aka" placeholder="Nickname"  data-parsley-trigger="keyup" required>
                                 </div>
-                                <div class="form-group mt-2">
-                                    <label for="exampleFormControlTextarea1">Group</label>
-                                    <input class="form-control" id="group" name="group" placeholder="Group" >
-                                </div>
-                                
 
                                 <div class="form-group mt-2">
-                                <label for="exampleFormControlTextarea1">country</label>
+                                <label for="exampleFormControlTextarea1">COUNTRY</label>
                                     <input class="form-control" id="country" name="country" placeholder="country"  data-parsley-type="integer" data-parsley-trigger="keyup" required>
                                 </div>
                                 
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">image</label>
+                                    <label for="formFile" class="form-label">IMAGE</label>
                                     <input class="form-control" name="image" type="file" id="formFile">
                                 </div>
                         </div>
