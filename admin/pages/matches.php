@@ -7,6 +7,7 @@ $result = $matches->show();
 $teams = $matches->getTeams();
 $stadiums = $matches->getStadiums();
 if(isset($_POST['save'])) { $matches->add();}
+if(isset($_POST['delete_matche'])) { $matches->delete(); }
 ?>
 <div class="container-fluid py-4">
       <div class="row">
@@ -57,10 +58,18 @@ if(isset($_POST['save'])) { $matches->add();}
                               <p class="text-xs text-secondary mb-0"><?= $row['stadium_name'] ?></p>
                             </td>
                             <td class="align-middle">
-                              <a href="edit-matches.php?id=<?= $row['id'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                              <a href="edit-matches.php?id=<?= $row['id'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit matche">
                                 Edit
                               </a>
+                              <a href="javascript:void(0)" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete matche"
+                                  onclick="if(confirm('Are You sure to delete this record?')){document.querySelector('#delete-matche-<?php echo $row['id'] ?>').submit();} else {return false}"
+                                  class="text-danger" id="delete-btn">
+                                      <i class="fa-solid fa-trash"></i>
+                              </a>
                             </td>
+                            <form action="matches.php" method="post" class="d-none" id="delete-matche-<?php echo $row['id'] ?>" >
+                                <input type="hidden" name="delete_matche" value="<?php echo $row['id'] ?>" >
+                            </form>
                           </tr>
                         <?php } ?>
                     </tbody>

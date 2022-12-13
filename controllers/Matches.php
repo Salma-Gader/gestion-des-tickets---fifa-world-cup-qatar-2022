@@ -92,7 +92,14 @@ class Matche extends DB {
     }
   }
   public function delete() {
-    // 
+    try {
+
+        $id = $_POST['delete_matche'];
+        $stm = $this->pdo->prepare("DELETE FROM matches WHERE id=?");
+        $stm->execute([$id]);
+    } catch (PDOException $e) {
+        "Erreur" . $e->getMessage();
+    }
   }
 }
 ?>
