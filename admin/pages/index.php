@@ -3,9 +3,6 @@ require '../../controllers/scripts.php';
 
 $display = new crud();
 $result=$display->allRows("SELECT * FROM teams");
-
-
-
 ?>
 <!-- landing page  -->
 <!DOCTYPE html>
