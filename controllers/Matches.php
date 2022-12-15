@@ -1,6 +1,7 @@
 <?php
 
- require dirname(__DIR__) . '/models/db.php';
+require dirname(__DIR__) . '/models/db.php';
+require dirname(__DIR__) . '/admin/includes/insertImage.php';
 
 class Matche extends DB {
   public $id;
@@ -25,7 +26,8 @@ class Matche extends DB {
   }
   public function add(){
     try {
-
+      
+        $image = insertImage($_FILES['file']);
         $first_team_id  = $_POST['first_team'];
         $second_team_id = $_POST['second_team'];
         $date           = $_POST['date'];
