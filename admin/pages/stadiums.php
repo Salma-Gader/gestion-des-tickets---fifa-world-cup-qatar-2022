@@ -3,14 +3,6 @@ require('../../controllers/scripts.php');
 
 $display = new crud();
 $result=$display->allRows("SELECT * FROM stadiums");
-//  if(isset($_POST["save"])){
-//      $name=$_POST["name"];
-//      $description=$_POST["description"];
-//      $capacity=$_POST["capacity"];
-//      $location=$_POST["location"];
-//      $data=[$name,$description,$capacity,$location];
-//      $insertdta = $insert->action("INSERT INTO stadiums(name,description,capacity,location) VALUES(?,?,?,?)",$data);
-//  }
 ?>
 <?php include'../layouts/header.php'; ?>
     <div class="container-fluid py-4">

@@ -17,7 +17,6 @@ foreach($result as $row)
         <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
     </div>
     <div class="modal-body">
-        <!-- This Input Allows Storing Task Index  -->
         <input type="hidden" id="" value="<?= $id ?>" name="id">
         <input type="hidden" id="" name="photo" value="<?= $row['image'] ?>" name="id">
         <div class="mb-3">
