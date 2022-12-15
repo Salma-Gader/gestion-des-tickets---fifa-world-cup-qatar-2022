@@ -4,6 +4,10 @@ include'../layouts/header.php';
 $page = $pages['matches'];
 $matches = new Matche();
 $result = $matches->show();
+$teams = $matches->getTeams();
+$stadiums = $matches->getStadiums();
+if(isset($_POST['save'])) { $matches->add();$result = $matches->show(); }
+if(isset($_POST['delete_matche'])) { $matches->delete();$result = $matches->show(); }
 ?>
 <div class="container-fluid py-4">
       <div class="row">
@@ -54,10 +58,18 @@ $result = $matches->show();
                               <p class="text-xs text-secondary mb-0"><?= $row['stadium_name'] ?></p>
                             </td>
                             <td class="align-middle">
-                              <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                              <a href="edit-matches.php?id=<?= $row['id'] ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit matche">
                                 Edit
                               </a>
+                              <a href="javascript:void(0)" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Delete matche"
+                                  onclick="if(confirm('Are You sure to delete this record?')){document.querySelector('#delete-matche-<?php echo $row['id'] ?>').submit();} else {return false}"
+                                  class="text-danger" id="delete-btn">
+                                      <i class="fa-solid fa-trash"></i>
+                              </a>
                             </td>
+                            <form action="matches.php" method="post" class="d-none" id="delete-matche-<?php echo $row['id'] ?>" >
+                                <input type="hidden" name="delete_matche" value="<?php echo $row['id'] ?>" >
+                            </form>
                           </tr>
                         <?php } ?>
                     </tbody>
@@ -71,19 +83,48 @@ $result = $matches->show();
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <form action="matches.php" method="POST">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="first_team" class="form-label">First Team</label>
+            <select name="first_team" id="first_team" class="form-control">
+              <?php foreach ($teams as $team) { ?>
+                <option value="<?= $team['id'] ?>"><?= $team['name'] ?></option>
+              <?php } ?>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="second_team" class="form-label">Second Team</label>
+            <select name="second_team" id="second_team" class="form-control">
+              <?php foreach ($teams as $team) { ?>
+                <option value="<?= $team['id'] ?>"><?= $team['name'] ?></option>
+              <?php } ?>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" name="date" class="form-control" id="date">
+          </div>
+          <div class="mb-3">
+            <label for="stadium" class="form-label">Stadium</label>
+            <select name="stadium" id="stadium" class="form-control">
+              <?php foreach ($stadiums as $stadium) { ?>
+                <option value="<?= $stadium['id'] ?>"><?= $stadium['name'] ?></option>
+              <?php } ?>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" name="save" class="btn btn-primary">Save changes</button>
+        </div>
       </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
+    </form>
   </div>
 </div>
 <?php include'../layouts/footer.php' ?>

@@ -1,47 +1,23 @@
-.btn-signUp {
-    background-color: #8A1538;
+.mx-5 {
+    margin-left: -50rem!important;
 }
-
-.btn-signUp:hover {
-    background-color: white;
-    color: #8A1538 !important;
+.bg-danger,.btn-danger
+{
+    background-color: #780A25!important;
 }
-
-.text-image {
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 10%;
+.text-danger
+{
+    color: #780A25!important;
 }
-
-.searsh {
-    width: 70%;
-    height: 3rem;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 16%;
-    border-radius: 10px !important;
+.border-danger
+{
+    border-color:#780A25!important;
 }
-
-.btn-search {
-    background-color: #8A1538;
+.fullheight
+{
+    height: 100vh!important;
+    background: linear-gradient(45deg, black, transparent);
 }
-
-.btn-search:hover {
-    color: black !important;
-    background-color: #b59aa1;
-}
-
-.btn-login {
-    border-color: #8A1538 !important;
-}
-
-.btn-login:hover {
-    background-color: #8A1538;
-    color: white !important;
-}
-
-@media screen and (max-width: 600px) {
-    .searsh {
-        width: 95%;
-    }
+.input{
+    border-color: white!important;
 }

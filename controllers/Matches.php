@@ -1,30 +1,11 @@
 <?php
 
-require dirname(__DIR__) . '/models/db.php';
+ require dirname(__DIR__) . '/models/db.php';
 
 class Matche extends DB {
-//   private $teams;
-//   private $first_team;
-//   private $secound_team;
-//   private $date;
-//   private $stadium;
-
-//   public function __construct($teams,$first_team,$secound_team,$date,$stadium) {
-//     $this->teams = $teams;
-//     $this->first_team = $first_team;
-//     $this->secound_team = $secound_team;
-//     $this->date = $date;
-//     $this->stadium = $stadium;
-//   }
+  public $id;
   public function show() {
     try {
-        // $stm = $this->pdo->prepare("SELECT matches.* , stadiums.* , teams.* ,
-        // stadiums.name stadium_name , teams.name team_name
-        // FROM matches 
-        // INNER JOIN teams
-        // INNER JOIN stadiums 
-        // ON stadiums.id = stadium_id 
-        // AND teams.id = matches.first_team_id OR teams.id = matches.second_team_id");
         $sql = "select matches.* , stadiums.name AS stadium_name ,
         first_team.image AS first_team_image ,
         second_team.image AS second_team_image , 
@@ -33,8 +14,7 @@ class Matche extends DB {
         FROM matches 
         JOIN teams first_team ON matches.first_team_id = first_team.id 
         JOIN teams second_team ON matches.second_team_id = second_team.id 
-        JOIN stadiums ON matches.stadium_id = stadiums.id 
-        LIMIT 1;";
+        JOIN stadiums ON matches.stadium_id = stadiums.id";
         $stm = $this->pdo->prepare($sql);
         $stm->execute();
         $result = $stm->fetchAll();
@@ -43,24 +23,83 @@ class Matche extends DB {
         "Erreur" . $e->getMessage();
     }
   }
-  public function create() {
-    // 
+  public function add(){
     try {
-        $data=[$this->teams,$this->first_team,$this->secound_team,$this->date,$this->stadium];
-        $stm = $this->pdo->prepare("INSERT INTO stadiums(teams,first_team,secound_team,date,stadium) VALUES(?,?,?,?,?)");
-        $stm->execute($data);
+
+        $first_team_id  = $_POST['first_team'];
+        $second_team_id = $_POST['second_team'];
+        $date           = $_POST['date'];
+        $stadium_id     = $_POST['stadium'];
+
+        $stm = $this->pdo->prepare("INSERT INTO matches(first_team_id , second_team_id , date , stadium_id) VALUES(?,?,?,?)");
+        $stm->execute([$first_team_id,$second_team_id,$date,$stadium_id]);
+    } catch (PDOException $e) {
+        "Erreur" . $e->getMessage();
+    }
+  }
+  public function getTeams() {
+    try {
+        $stm = $this->pdo->prepare("SELECT id , name FROM teams");
+        $stm->execute();
+        $result = $stm->fetchAll();
+        return $result;
+    } catch (PDOException $e) {
+        "Erreur" . $e->getMessage();
+    }
+  }
+  public function getStadiums() {
+    try {
+        $stm = $this->pdo->prepare("SELECT id , name FROM stadiums");
+        $stm->execute();
+        $result = $stm->fetchAll();
+        return $result;
     } catch (PDOException $e) {
         "Erreur" . $e->getMessage();
     }
   }
   public function edit() {
-    // 
+    try {
+      $this->id = $_GET['id'];
+        $stm = $this->pdo->prepare("select matches.* , stadiums.name AS stadium_name ,
+        first_team.image AS first_team_image ,
+        second_team.image AS second_team_image , 
+        first_team.name AS first_team_name ,
+        second_team.name AS second_team_name 
+        FROM matches 
+        JOIN teams first_team ON matches.first_team_id = first_team.id 
+        JOIN teams second_team ON matches.second_team_id = second_team.id 
+        JOIN stadiums ON matches.stadium_id = stadiums.id WHERE matches.id = '$this->id'");
+        $stm->execute();
+        $result = $stm->fetch();
+        return $result;
+    } catch (PDOException $e) {
+        "Erreur" . $e->getMessage();
+    }
   }
   public function update() {
-    // 
+    try {
+
+        $first_team_id  = $_POST['first_team'];
+        $second_team_id = $_POST['second_team'];
+        $date           = $_POST['date'];
+        $stadium_id     = $_POST['stadium'];
+        $id = $this->id;
+
+        $stm = $this->pdo->prepare("UPDATE matches SET first_team_id=?, second_team_id=?, date=?, stadium_id=? WHERE id=?");
+        $stm->execute([$first_team_id,$second_team_id,$date,$stadium_id,$id]);
+    } catch (PDOException $e) {
+        "Erreur" . $e->getMessage();
+    }
+  }
+  public function delete() {
+    try {
+
+        $id = $_POST['delete_matche'];
+        $stm = $this->pdo->prepare("DELETE FROM matches WHERE id=?");
+        $stm->execute([$id]);
+    } catch (PDOException $e) {
+        "Erreur" . $e->getMessage();
+    }
   }
 }
-
-// $apple = new Matche("Apple","Apple","Apple","Apple","Apple");
-// echo $apple->show();
 ?>
