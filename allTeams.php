@@ -1,5 +1,5 @@
 <?php
-require '../../controllers/scripts.php';
+require 'controllers/scripts.php';
 
 $display = new crud();
 $result=$display->allRows("SELECT * FROM teams");
@@ -17,7 +17,7 @@ $result=$display->allRows("SELECT * FROM teams");
     <!-- bootstrap and css links  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="admin/assets/css/style.css">
      <!-- icon library -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
@@ -59,7 +59,7 @@ $result=$display->allRows("SELECT * FROM teams");
 <!-- bootstrap and css links  -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="admin/assets/css/style.css">
 
 <section class="container">
         <div class="d-flex justify-content-between mt-4 mb-4">
@@ -70,7 +70,7 @@ $result=$display->allRows("SELECT * FROM teams");
         <?php foreach ($result as $row) { ?>
             <div class="col-md-3">
                 <div class="card mb-4">
-                    <img class="card-img-top " height="200" src="../assets/img/teams-img/<?php echo $row['image'] ?>" alt="Card image cap">
+                    <img class="card-img-top " height="200" src="admin/assets/img/teams-img/<?php echo $row['image'] ?>" alt="Card image cap">
                     <div class="card-body">
                     <p class="card-text"><?php echo $row['name']?></p>
                     <p class="card-text fw-light"><?php echo $row['aka']?></p>

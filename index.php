@@ -1,7 +1,7 @@
 <?php
-include('./middlewares/isLoggedin.php');
+// include('./middlewares/isLoggedin.php');
 require 'controllers/scripts.php';
-$islogedin = new IslogedIn();
+// $islogedin = new IslogedIn();
 $display = new crud();
 $result=$display->allRows("SELECT * FROM teams");
 ?>
@@ -18,7 +18,7 @@ $result=$display->allRows("SELECT * FROM teams");
     <!-- bootstrap and css links  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="admin/assets/css/style.css">
      <!-- icon library -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
      <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
@@ -51,8 +51,8 @@ $result=$display->allRows("SELECT * FROM teams");
                     </li>
                 </ul>
                 <span class="me-5">
-                    <a class="btn-login btn border border-1 me-3" href="#" style="color: #8A1538 ;">Log In</a>
-                    <a class="btn-signUp  btn btn-danger text-white" href="#">Sign Up</a>
+                    <a class="btn-login btn border border-1 me-3" href="login.php" style="color: #8A1538 ;">Log In</a>
+                    <a class="btn-signUp  btn btn-danger text-white" href="signup.php">Sign Up</a>
                 </span>
             </div>
         </div>
@@ -61,8 +61,8 @@ $result=$display->allRows("SELECT * FROM teams");
     <!-- header image -->
     <section>
 
-        <img src="../assets/img/all/fifa-img.png" class="position-absolute   groups-img img-fluid mx-auto d-block" height="30px" width="100%">
-        <img src="../assets/img/all/text-image.png" width="70%" class="position-relative text-image">
+        <img src="admin/assets/img/all/fifa-img.png" class="position-absolute   groups-img img-fluid mx-auto d-block" height="30px" width="100%">
+        <img src="admin/assets/img/all/text-image.png" width="70%" class="position-relative text-image">
         <div class="searsh input-group border rounded border-4 border-dark">
             <input type="search" class="form-control rounded-start" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
             <input placeholder="Select date" type="date" class="form-control">
@@ -80,7 +80,7 @@ $result=$display->allRows("SELECT * FROM teams");
         <div class="row pb-5">
             <div class="col-md-3">
                 <div class="card mb-4">
-                    <img class="card-img-top" src="../assets/img/all/SaudiMexico.webp" alt="Card image cap">
+                    <img class="card-img-top" src="admin/assets/img/all/SaudiMexico.webp" alt="Card image cap">
                         <div class="card-body">
                             <div class="d-flex justify-content-around">
                             <div class="me-3">
@@ -98,7 +98,7 @@ $result=$display->allRows("SELECT * FROM teams");
             </div>
             <div class="col-md-3">
                 <div class="card mb-4">
-                    <img class="card-img-top" src="../assets/img/all/PolandArgentina.webp" alt="Card image cap">
+                    <img class="card-img-top" src="admin/assets/img/all/PolandArgentina.webp" alt="Card image cap">
                         <div class="card-body">
                             <div class="d-flex justify-content-around">
                             <div class="me-3">
@@ -117,7 +117,7 @@ $result=$display->allRows("SELECT * FROM teams");
 
             <div class="col-md-3">
                 <div class="card mb-4">
-                    <img class="card-img-top" src="../assets/img/all/AustraliDenmark.webp" alt="Card image cap">
+                    <img class="card-img-top" src="admin/assets/img/all/AustraliDenmark.webp" alt="Card image cap">
                         <div class="card-body">
                             <div class="d-flex justify-content-around">
                             <div class="me-3">
@@ -136,7 +136,7 @@ $result=$display->allRows("SELECT * FROM teams");
 
             <div class="col-md-3">
                 <div class="card mb-4">
-                    <img class="card-img-top" src="../assets/img/all/TunisieFrance.webp" alt="Card image cap">
+                    <img class="card-img-top" src="admin/assets/img/all/TunisieFrance.webp" alt="Card image cap">
                     <div class="card-body">
                         <div class="d-flex justify-content-around">
                             <div class="me-3">
@@ -155,7 +155,7 @@ $result=$display->allRows("SELECT * FROM teams");
     </section>
     <!-- Way To The Final -->
     <section class="col-12 d-flex justify-content-center mb-5">
-        <img src="../assets/img/all/Way to final.png" class=" groups-img img-fluid mx-auto d-block" alt="image">
+        <img src="admin/assets/img/all/Way to final.png" class=" groups-img img-fluid mx-auto d-block" alt="image">
     </section>
     
     <!--Teams -->
@@ -169,7 +169,7 @@ $result=$display->allRows("SELECT * FROM teams");
         <?php foreach ($result as $row) { ?>
             <div class="col-md-3">
                 <div class="card mb-4">
-                    <img class="card-img-top " height="200" src="../assets/img/teams-img/<?php echo $row['image'] ?>" alt="Card image cap">
+                    <img class="card-img-top " height="200" src="admin/assets/img/teams-img/<?php echo $row['image'] ?>" alt="Card image cap">
                     <div class="card-body">
                     <p class="card-text"><?php echo $row['name']?></p>
                     <p class="card-text fw-light"><?php echo $row['aka']?></p>
@@ -214,7 +214,7 @@ $result=$display->allRows("SELECT * FROM teams");
     </section>
  <!--  groups  -->
  <section class="col-12 d-flex justify-content-center bg-danger mt-5 mb-5">
-        <img src="../assets/img/FIFA-World-Cup-Qatar-2022-Final-groups.jpg" class="container groups-img img-fluid mx-auto d-block" alt="image">
+        <img src="admin/assets/img/FIFA-World-Cup-Qatar-2022-Final-groups.jpg" class="container groups-img img-fluid mx-auto d-block" alt="image">
     </section>
 
 
@@ -236,7 +236,7 @@ $result=$display->allRows("SELECT * FROM teams");
         foreach ($result as $row) { ?>    
                 <div class="col-md-3 ">
                     <div class="card mb-4 "height="auto">
-                        <img class="card-img-top" height="250" src="../assets/img/all/<?= $row['image'] ?>" alt="Card image cap">
+                        <img class="card-img-top" height="250" src="admin/assets/img/all/<?= $row['image'] ?>" alt="Card image cap">
                         <div class="card-body">
                         <p class="card-text"><?= $row['name']?></p>
                         <p class="card-text">Capacity : <?= $row['capacity']?></p>
@@ -303,10 +303,10 @@ $result=$display->allRows("SELECT * FROM teams");
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">YouTicketscom for iOS</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Mobile site</a></li>
                     <button class="btn btn-default me-5  p-0">
-                        <img class="rounded" src="../assets/img/all/apple.png" width="100%" />
+                        <img class="rounded" src="admin/assets/img/all/apple.png" width="100%" />
                     </button>
                     <button class="btn btn-default me-5 mt-3  p-0">
-                        <img class="rounded" src="../assets/img/all/googleplay.png" width="100%" />
+                        <img class="rounded" src="admin/assets/img/all/googleplay.png" width="100%" />
                     </button>
                 </ul>
             </div>
