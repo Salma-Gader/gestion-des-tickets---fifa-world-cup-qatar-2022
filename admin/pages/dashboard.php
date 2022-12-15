@@ -2,14 +2,19 @@
 //include Userimp.php
 include('../../controllers/Userimp.php');
 include('../../middlewares/isloggedin.php');
+include('../../middlewares/isadmin.php');
 // check if user is admin
 $islogedin = new IslogedIn();
+$isadmin = new IsAdmin();
 //check if user is admin
-if ($_SESSION['isadmin'] == 1) {
-    //if the user is admin redirect to admin.php
-    header('location: ./admin/pages/dashboard.php');
-}
+// if ($_SESSION['isadmin'] == 1)
+// {
+    //if the user is admin redirect to admin.php  
+include'../layouts/header.php';
+isset($page) ?include'../components/table.php' : include'../components/statistics.php';
+include'../layouts/footer.php';
+// }else{
+    //if the user is not admin redirect to index.php
+//     header('location: ../../../../index.php');
+// }
 ?>
-<?php include'../layouts/header.php' ?>
-  <?php isset($page) ?include'../components/table.php' : include'../components/statistics.php' ?>
-<?php include'../layouts/footer.php' ?>
