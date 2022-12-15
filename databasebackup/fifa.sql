@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 13, 2022 at 11:28 AM
+-- Generation Time: Dec 15, 2022 at 10:23 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -20,6 +20,35 @@ SET time_zone = "+00:00";
 --
 -- Database: `fifa`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `matches`
+--
+
+CREATE TABLE `matches` (
+  `id` int(11) NOT NULL,
+  `first_team_id` int(11) NOT NULL,
+  `second_team_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `stadium_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservation`
+--
+
+CREATE TABLE `reservation` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `match_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `data` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- --------------------------------------------------------
 
 --
@@ -31,6 +60,49 @@ CREATE TABLE `resetpassword` (
   `token` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `used` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stadiums`
+--
+
+CREATE TABLE `stadiums` (
+  `id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `capacity` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `stadiums`
+--
+
+INSERT INTO `stadiums` (`id`, `image`, `name`, `description`, `location`, `capacity`) VALUES
+(21, 'al-bayt.png', 'Al Bayt Stadium', 'Enjoy the warmest of Arab welcomes\r\n', 'Al Khor City, 35km north of Doha', '68,895'),
+(22, 'lusail.png', 'Lusail Stadium', 'Alive with heritage, an icon for the future\r\n', 'Lusail City, 20km north of central Doha', '88,966'),
+(23, 'ahmad.png', 'Ahmad Bin Ali Stadium', 'Where desert stories unfold', 'Umm Al Afaei, 20km west of central Doha', '45,032'),
+(24, 'al-janoub.png', 'Al Janoub Stadium', 'See football sail into a new era', 'Al Wakrah, 22km south of central Doha', '44,325'),
+(25, 'al-thumana.png', 'Al Thumama Stadium', 'A venue steeped in culture and tradition', 'Al Thumama Stadium, 12km south of central Doha', '44,400'),
+(26, 'education.png', 'Education City Stadium', 'A shimmering jewel of inspiration', 'Al Rayyan, 7km north-west of central Doha', '44,667'),
+(27, 'khalifa.png', 'Khalifa International Stadium', 'A sporting legend re-energised', 'Aspire, 5km west of central Doha', '45,857'),
+(28, '974.png', 'Stadium 974', 'Innovation at the heart of it all', 'Ras Abu Aboud, 10km east of central Doha', '44,089');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teams`
+--
+
+CREATE TABLE `teams` (
+  `id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `aka` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -62,10 +134,28 @@ INSERT INTO `users` (`id`, `fname`, `lname`, `email`, `isadmin`, `isactive`, `to
 --
 
 --
+-- Indexes for table `matches`
+--
+ALTER TABLE `matches`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `reservation`
+--
+ALTER TABLE `reservation`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `resetpassword`
 --
 ALTER TABLE `resetpassword`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `stadiums`
+--
+ALTER TABLE `stadiums`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -84,123 +174,16 @@ ALTER TABLE `resetpassword`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
+-- AUTO_INCREMENT for table `stadiums`
+--
+ALTER TABLE `stadiums`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
-COMMIT;
-
-
---
--- Table structure for table `matches`
---
-
-CREATE TABLE `matches` (
-  `id` int(11) NOT NULL,
-  `first_team_id` int(11) NOT NULL,
-  `second_team_id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `stadium_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `reservation`
---
-
-CREATE TABLE `reservation` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `match_id` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `data` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `stadiums`
---
-
-CREATE TABLE `stadiums` (
-  `id` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `location` varchar(255) NOT NULL,
-  `capacity` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `teams`
---
-
-CREATE TABLE `teams` (
-  `id` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `aka` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `matches`
---
-ALTER TABLE `matches`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `reservation`
---
-ALTER TABLE `reservation`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `stadiums`
---
-ALTER TABLE `stadiums`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `teams`
---
-ALTER TABLE `teams`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `matches`
---
-ALTER TABLE `matches`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `reservation`
---
-ALTER TABLE `reservation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `stadiums`
---
-ALTER TABLE `stadiums`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `teams`
---
-ALTER TABLE `teams`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
