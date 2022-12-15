@@ -102,9 +102,45 @@ CREATE TABLE `teams` (
   `image` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `aka` varchar(255) NOT NULL,
-  `country` varchar(255) NOT NULL
+  `country` varchar(255) NOT NULL,
+  `team-group` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `teams`
+--
+
+INSERT INTO `teams` (`id`, `image`, `name`, `aka`, `country`, `team-group`) VALUES
+(21, 'card1.png', 'Morocco footbal team', 'Atlas Lions', 'Morocco', ''),
+(112, 'brazil (1).jpg', 'Brazil national football team', 'A Seleção', 'Brazil', ''),
+(113, 'Argentina.jpg', 'Argentina national football team', 'La Albiceleste', 'Argentina', ''),
+(114, 'PORTUGAL.jpg', 'Portugal national football team', 'Selecção das Quinas', 'Portugal', ''),
+(115, 'FRANCE.jpg', 'France national football team', 'The Blues', 'France', ''),
+(121, 'Belgium.jpg', 'Belgium national football team', 'Red Devils', 'Balgium', ''),
+(122, 'canada.jpg', 'Canada men\'s national soccer team', 'the Canucks', 'Canada', ''),
+(123, 'croitia.jpg', 'Croatia national football team', 'The Vatreni', 'Croatia', ''),
+(124, 'spain.jpg', 'Spain national football team', 'The Red Fury', 'Spain', '');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `teams`
+--
+ALTER TABLE `teams`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `teams`
+--
+ALTER TABLE `teams`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
+COMMIT;
 -- --------------------------------------------------------
 
 --

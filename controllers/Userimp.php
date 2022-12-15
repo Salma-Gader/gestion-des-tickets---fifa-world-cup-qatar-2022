@@ -244,10 +244,10 @@ class Userimp extends DB implements user
                         $_SESSION['logged'] = true;
                         //check if its admin or user and redirect to the right page
                         if ($_SESSION['isadmin'] == 1) {
-                            header('location:./pages/dashboard.php');
+                            header('location: admin/pages/dashboard.php');
                     }
                         if ($_SESSION['isadmin'] == 0) {
-                            header('location:./index.php');
+                            header('location: index.php');
                     }
                     }
 
