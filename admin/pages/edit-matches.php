@@ -10,13 +10,21 @@ if(isset($_POST['update'])) { $matches->update();$result = $matches->edit();}
 ?>
 
   <div class="container">
-    <form action="edit-matches.php?id=<?= $_GET['id']; ?>" method="POST">
+    <form action="edit-matches.php?id=<?= $_GET['id']; ?>" method="POST" enctype="multipart/form-data">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Update</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <div class="mb-3">
+            <img src="../assets/img/all/<?= $result['image'] ?>" height="180" width="340" alt="" srcset="">
+          </div>
+          <div class="mb-3">
+            <label for="file" class="form-label">Image</label>
+            <input type="file" name="file" id="file" class="form-control">
+            <input type="hidden" name="old_file" value="<?= $result['image'] ?>">
+          </div>
           <div class="mb-3">
             <label for="first_team" class="form-label">First Team</label>
             <select name="first_team" id="first_team" class="form-control">

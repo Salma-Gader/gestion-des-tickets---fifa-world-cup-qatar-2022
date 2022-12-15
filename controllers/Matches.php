@@ -81,14 +81,15 @@ class Matche extends DB {
   public function update() {
     try {
 
+        $image = insertImage($_FILES['file']) ?: $_POST['old_file'] ;
         $first_team_id  = $_POST['first_team'];
         $second_team_id = $_POST['second_team'];
         $date           = $_POST['date'];
         $stadium_id     = $_POST['stadium'];
         $id = $this->id;
 
-        $stm = $this->pdo->prepare("UPDATE matches SET first_team_id=?, second_team_id=?, date=?, stadium_id=? WHERE id=?");
-        $stm->execute([$first_team_id,$second_team_id,$date,$stadium_id,$id]);
+        $stm = $this->pdo->prepare("UPDATE matches SET image=?, first_team_id=?, second_team_id=?, date=?, stadium_id=? WHERE id=?");
+        $stm->execute([$image,$first_team_id,$second_team_id,$date,$stadium_id,$id]);
     } catch (PDOException $e) {
         "Erreur" . $e->getMessage();
     }
