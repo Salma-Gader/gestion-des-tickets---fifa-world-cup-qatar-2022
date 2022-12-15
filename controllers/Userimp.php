@@ -1,7 +1,7 @@
 
 <?php
-require 'controllers/scripts.php';
-include('./controllers/User.php');
+require 'scripts.php';
+include('user.php');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
@@ -242,8 +242,17 @@ class Userimp extends DB implements user
                         $_SESSION['isadmin'] = $row['isadmin'];
                         $_SESSION['isactive'] = $row['isactive'];
                         $_SESSION['logged'] = true;
-                        header('location: ./index.php');
-                    } else {
+                        //check if its admin or user and redirect to the right page
+                        if ($_SESSION['isadmin'] == 1) {
+                            header('location:./pages/dashboard.php');
+                    }
+                        if ($_SESSION['isadmin'] == 0) {
+                            header('location:./index.php');
+                    }
+                    }
+
+
+                    else {
                         echo '<div class="alert alert-warning">
                         Please verify your email
                     </div>';

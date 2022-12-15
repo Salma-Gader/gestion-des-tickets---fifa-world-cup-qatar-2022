@@ -83,13 +83,17 @@ if(isset($_POST['delete_matche'])) { $matches->delete();$result = $matches->show
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <form action="matches.php" method="POST">
+    <form action="matches.php" method="POST" enctype="multipart/form-data">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <div class="mb-3">
+            <label for="file" class="form-label">Image</label>
+            <input type="file" name="file" id="file" class="form-control">
+          </div>
           <div class="mb-3">
             <label for="first_team" class="form-label">First Team</label>
             <select name="first_team" id="first_team" class="form-control">
