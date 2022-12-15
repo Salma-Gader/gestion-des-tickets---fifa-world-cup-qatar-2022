@@ -1,33 +1,28 @@
-.btn-signUp {
-    background-color: #8A1538;
+.mx-5 {
+    margin-left: -50rem!important;
 }
 
-.btn-signUp:hover {
-    background-color: white;
-    color: #8A1538 !important;
+.bg-danger,
+.btn-danger {
+    background-color: #780A25!important;
 }
 
-.text-image {
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 10%;
+.text-danger {
+    color: #780A25!important;
 }
 
 .searsh {
     width: 70%;
     height: 3rem;
-    left: 17%;
+    left: 50%;
+    transform: translateX(-50%);
     margin-top: 16%;
     border-radius: 10px !important;
-    transition: 0.5s;
 }
 
-.searsh:hover {
-    transform: scale(1.1);
-}
-
-.btn-search {
-    background-color: #8A1538;
+.fullheight {
+    height: 100vh!important;
+    background: linear-gradient(45deg, black, transparent);
 }
 
 .btn-search:hover {
@@ -46,8 +41,7 @@
 
 @media screen and (max-width: 600px) {
     .searsh {
-        left: 5%;
-        width: 90%;
+        width: 95%;
     }
 }
 
