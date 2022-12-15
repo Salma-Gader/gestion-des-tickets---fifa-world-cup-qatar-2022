@@ -1,12 +1,11 @@
 <?php
-// include('./middlewares/isLoggedin.php');
+include('./middlewares/isLoggedin.php');
+//include('./middlewares/isadmin.php');
 require 'controllers/scripts.php';
-// $islogedin = new IslogedIn();
+$islogedin = new IslogedIn();
 $display = new crud();
 $result=$display->allRows("SELECT * FROM teams");
 ?>
-<!-- landing page  -->
-<!-- landing page  -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,10 +49,22 @@ $result=$display->allRows("SELECT * FROM teams");
                         <a class="nav-link active fw-bold" href="#">Contact</a>
                     </li>
                 </ul>
-                <span class="me-5">
-                    <a class="btn-login btn border border-1 me-3" href="login.php" style="color: #8A1538 ;">Log In</a>
-                    <a class="btn-signUp  btn btn-danger text-white" href="signup.php">Sign Up</a>
-                </span>
+                <!-- landing page  -->
+                <?php
+                if(isset($_SESSION['logged'])){
+                    echo '<span class="me-5">
+                    <a class="btn-login btn border border-1 me-3" href="logout.php" style="color: #8A1538 ;">Log Out</a>
+                    <a class="btn-signUp  btn btn-danger text-white me-5" href="userprofile.php">Profile</a>
+                    </span>';
+                }else{
+                    echo '<a class="btn-login btn border border-1 me-3" href="login.php" style="color: #8A1538 ;">Log In</a>';
+                    echo '<a class="btn-signUp  btn btn-danger text-white me-5" href="signup.php">Sign Up</a>';
+                }
+                ?>
+                <!-- <span class="me-5">
+                    <a class="btn-login btn border border-1 me-3" href="#" style="color: #8A1538 ;">Log In</a>
+                    <a class="btn-signUp  btn btn-danger text-white" href="#">Sign Up</a>
+                </span> -->
             </div>
         </div>
     </nav>
@@ -154,8 +165,8 @@ $result=$display->allRows("SELECT * FROM teams");
         </div>
     </section>
     <!-- Way To The Final -->
-    <section class="col-12 d-flex justify-content-center mb-5">
-        <img src="admin/assets/img/all/Way to final.png" class=" groups-img img-fluid mx-auto d-block" alt="image">
+    <section class="container col-12 d-flex justify-content-center mb-5 ">
+        <img src="assets/img/FINALS.png" class="rounded groups-img img-fluid mx-auto d-block" alt="image">
     </section>
     
     <!--Teams -->
@@ -165,10 +176,10 @@ $result=$display->allRows("SELECT * FROM teams");
             <a href="allTeams.php" class="text-danger fs-5 ">View All &#10148</a>
         </div>
 
-        <div class="row js-flickity" data-flickity-options='{ "wrapAround": true}'> <!-- Flickity plugin-->
+        <div class="row carousel"  data-flickity='{ "freeScroll": true, "contain": true, "prevNextButtons": false, "pageDots": true }'> <!-- Flickity plugin-->
         <?php foreach ($result as $row) { ?>
-            <div class="col-md-3">
-                <div class="card mb-4">
+            <div class="col-md-3 carousel-cell">
+                <div class="card mb-4 ">
                     <img class="card-img-top " height="200" src="admin/assets/img/teams-img/<?php echo $row['image'] ?>" alt="Card image cap">
                     <div class="card-body">
                     <p class="card-text"><?php echo $row['name']?></p>
@@ -229,12 +240,12 @@ $result=$display->allRows("SELECT * FROM teams");
         </div>
         
 
-            <div class="row js-flickity" data-flickity-options='{ "wrapAround": true}'>
+            <div class="row carousel"  data-flickity='{ "freeScroll": true, "contain": true, "prevNextButtons": false, "pageDots": true }'>
             <?php 
         $display = new crud();
         $result=$display->allRows("SELECT * FROM stadiums");
         foreach ($result as $row) { ?>    
-                <div class="col-md-3 ">
+                <div class="col-md-3 carousel-cell">
                     <div class="card mb-4 "height="auto">
                         <img class="card-img-top" height="250" src="admin/assets/img/all/<?= $row['image'] ?>" alt="Card image cap">
                         <div class="card-body">
@@ -276,9 +287,6 @@ $result=$display->allRows("SELECT * FROM teams");
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Affiliate program</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Connectivity partners</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Promotions and events</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Integrations</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Community</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Loyalty program</a></li>
                 </ul>
             </div>
 
@@ -298,10 +306,7 @@ $result=$display->allRows("SELECT * FROM teams");
             <div class="col-6 col-md-2  mb-3">
                 <h5>Get the app</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">YouTicketscom for Android</a>
                     </li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">YouTicketscom for iOS</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Mobile site</a></li>
                     <button class="btn btn-default me-5  p-0">
                         <img class="rounded" src="admin/assets/img/all/apple.png" width="100%" />
                     </button>

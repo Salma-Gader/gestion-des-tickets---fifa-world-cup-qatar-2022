@@ -63,7 +63,7 @@ $result=$display->allRows("SELECT * FROM stadiums");
         </div>
       </div>
     </div>
-    <!-- TASK MODAL -->
+
     <div class="modal fade" id="modal-stadium">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -73,7 +73,6 @@ $result=$display->allRows("SELECT * FROM stadiums");
               <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
             </div>
             <div class="modal-body">
-              <!-- This Input Allows Storing Task Index  -->
               <input type="hidden" id="">
               <div class="mb-3">
                 <label class="form-label">Name</label>
