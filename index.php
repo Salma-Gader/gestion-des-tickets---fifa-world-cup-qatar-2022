@@ -1,12 +1,11 @@
 <?php
-// include('./middlewares/isLoggedin.php');
+include('./middlewares/isLoggedin.php');
+//include('./middlewares/isadmin.php');
 require 'controllers/scripts.php';
-// $islogedin = new IslogedIn();
+$islogedin = new IslogedIn();
 $display = new crud();
 $result=$display->allRows("SELECT * FROM teams");
 ?>
-<!-- landing page  -->
-<!-- landing page  -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,10 +49,22 @@ $result=$display->allRows("SELECT * FROM teams");
                         <a class="nav-link active fw-bold" href="#">Contact</a>
                     </li>
                 </ul>
-                <span class="me-5">
-                    <a class="btn-login btn border border-1 me-3" href="login.php" style="color: #8A1538 ;">Log In</a>
-                    <a class="btn-signUp  btn btn-danger text-white" href="signup.php">Sign Up</a>
-                </span>
+                <!-- landing page  -->
+                <?php
+                if(isset($_SESSION['logged'])){
+                    echo '<span class="me-5">
+                    <a class="btn-login btn border border-1 me-3" href="logout.php" style="color: #8A1538 ;">Log Out</a>
+                    <a class="btn-signUp  btn btn-danger text-white me-5" href="userprofile.php">Profile</a>
+                    </span>';
+                }else{
+                    echo '<a class="btn-login btn border border-1 me-3" href="login.php" style="color: #8A1538 ;">Log In</a>';
+                    echo '<a class="btn-signUp  btn btn-danger text-white me-5" href="signup.php">Sign Up</a>';
+                }
+                ?>
+                <!-- <span class="me-5">
+                    <a class="btn-login btn border border-1 me-3" href="#" style="color: #8A1538 ;">Log In</a>
+                    <a class="btn-signUp  btn btn-danger text-white" href="#">Sign Up</a>
+                </span> -->
             </div>
         </div>
     </nav>
