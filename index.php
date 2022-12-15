@@ -154,8 +154,8 @@ $result=$display->allRows("SELECT * FROM teams");
         </div>
     </section>
     <!-- Way To The Final -->
-    <section class="col-12 d-flex justify-content-center mb-5">
-        <img src="admin/assets/img/all/Way to final.png" class=" groups-img img-fluid mx-auto d-block" alt="image">
+    <section class="container col-12 d-flex justify-content-center mb-5">
+        <img src="assets/img/FINALS.png" class=" groups-img img-fluid mx-auto d-block" alt="image">
     </section>
     
     <!--Teams -->
