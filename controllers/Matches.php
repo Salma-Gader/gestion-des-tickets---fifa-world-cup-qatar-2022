@@ -33,8 +33,8 @@ class Matche extends DB {
         $date           = $_POST['date'];
         $stadium_id     = $_POST['stadium'];
 
-        $stm = $this->pdo->prepare("INSERT INTO matches(first_team_id , second_team_id , date , stadium_id) VALUES(?,?,?,?)");
-        $stm->execute([$first_team_id,$second_team_id,$date,$stadium_id]);
+        $stm = $this->pdo->prepare("INSERT INTO matches(image,first_team_id , second_team_id , date , stadium_id) VALUES(?,?,?,?,?)");
+        $stm->execute([$image,$first_team_id,$second_team_id,$date,$stadium_id]);
     } catch (PDOException $e) {
         "Erreur" . $e->getMessage();
     }
