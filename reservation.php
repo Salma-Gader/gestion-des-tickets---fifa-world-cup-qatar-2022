@@ -1,4 +1,15 @@
+<?php
+require('controllers/scripts.php');
+if(isset($_GET['matche'])) reserve(); 
 
+function reserve(){
+    $data = 1;
+    $save = new crud();
+    $save->oneRow("SELECT * FROM `matches_f` WHERE ?",$data);
+    return $save->oneRow();
+    header('location:reservation.php');
+}
+?>
 <html lang="en">
 
 <head>

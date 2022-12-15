@@ -17,14 +17,13 @@
     width: 70%;
     height: 3rem;
     left: 17%;
-    
     margin-top: 16%;
     border-radius: 10px !important;
     transition: 0.5s;
 }
-.searsh:hover{
-    transform: scale(1.1);
 
+.searsh:hover {
+    transform: scale(1.1);
 }
 
 .btn-search {
@@ -52,7 +51,9 @@
     }
 }
 
+
 /* second part  */
+
 a {
     text-decoration: none
 }
@@ -73,16 +74,46 @@ a {
 .card:hover {
     transform: scale(1.1);
 }
-.login-btn{
-    outline-style: auto;
-outline-width: 0.5px;
-outline-color: #8A1538;
 
+.login-btn {
+    outline-style: auto;
+    outline-width: 0.5px;
+    outline-color: #8A1538;
 }
-.text-danger{
+
+.text-danger {
     color: #8A1538 !important;
 }
-.head-img{
+
+.head-img {
     position: relative;
 }
 
+
+/*reservation style*/
+
+.mx-5 {
+    margin-left: -50rem!important;
+}
+
+.bg-danger,
+.btn-danger {
+    background-color: #8C1638!important;
+}
+
+.text-danger {
+    color: #8C1638!important;
+}
+
+.fullheight {
+    height: 100vh!important;
+    background: linear-gradient(45deg, black, transparent);
+}
+
+.input {
+    border-color: white!important;
+}
+
+.border-danger {
+    border-color: #8C1638!important;
+}

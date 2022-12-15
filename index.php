@@ -64,11 +64,12 @@
     <section class="container">
         <div class="d-flex justify-content-between mt-4 mb-4 ">
             <h2>Upcoming Matchs</h2>
-            <a href="teams.html" class="text-danger fs-5 ">View All &#10148</a>
+            <a href="#" class="text-danger fs-5 ">View All &#10148</a>
         </div>
-
+        <form action="#" method="GET">
         <div class="row pb-5">
             <div class="col-md-3">
+            <a href="test.php" class="text-dark" name="match">
                 <div class="card mb-4">
                     <img class="card-img-top" src="assets/img/SaudiMexico.webp" alt="Card image cap">
                         <div class="card-body">
@@ -85,8 +86,11 @@
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
+            
             <div class="col-md-3">
+            <a href="test.php" class="text-dark" name="match">
                 <div class="card mb-4">
                     <img class="card-img-top" src="assets/img/PolandArgentina.webp" alt="Card image cap">
                         <div class="card-body">
@@ -103,9 +107,11 @@
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
-
+            </form>
             <div class="col-md-3">
+            <a href="test.php" class="text-dark" name="match">
                 <div class="card mb-4">
                     <img class="card-img-top" src="assets/img/AustraliDenmark.webp" alt="Card image cap">
                         <div class="card-body">
@@ -122,9 +128,11 @@
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
 
             <div class="col-md-3">
+            <a href="test.php" class="text-dark" name="match">
                 <div class="card mb-4">
                     <img class="card-img-top" src="assets/img/TunisieFrance.webp" alt="Card image cap">
                     <div class="card-body">
@@ -141,8 +149,10 @@
                 </div>
                 </div>
             </div>
+            </a>
         </div>
     </section>
+
     <!--  groups  -->
     <section class="col-12 d-flex justify-content-center bg-danger">
         <img src="assets/img/FIFA-World-Cup-Qatar-2022-Final-groups.jpg" class="container groups-img img-fluid mx-auto d-block" alt="image">

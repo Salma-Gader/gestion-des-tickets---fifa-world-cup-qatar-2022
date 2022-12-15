@@ -1,20 +1,21 @@
 <?php
 require('controllers/scripts.php');
-if(isset($_POST['add'])) reserve(); 
+include('reservation.php');
+//if(isset($_POST['add'])) reserve(); 
 
-function reserve(){
+// function reserve(){
     
-    $save = new crud();
-    $user =$_POST["user"];
-    $match =$_POST["match"];
-    $stadium =$_POST["stadium"];
-    $quantiter =$_POST["quantiter"];
-    $date =$_POST["date"];
-    $data =[$user,$match,$stadium,$quantiter,$date];
-    var_dump($_POST);
-    $save->action("INSERT INTO `reservation`(`user_id`, `match_id`, `stadiums_id`, `quantity`, `date`) VALUES (?,?,?,?,?)",$data);
-    //header('location:index.php');
-}
+//     $save = new crud();
+//     $user =$_POST["user"];
+//     $match =$_POST["match"];
+//     $stadium =$_POST["stadium"];
+//     $quantiter =$_POST["quantiter"];
+//     $date =$_POST["date"];
+//     $data =[$user,$match,$stadium,$quantiter,$date];
+//     var_dump($_POST);
+//     $save->action("INSERT INTO `reservation`(`user_id`, `match_id`, `stadiums_id`, `quantity`, `date`) VALUES (?,?,?,?,?)",$data);
+//     //header('location:index.php');
+// }
 
 ?>
 <!DOCTYPE html>
@@ -28,28 +29,29 @@ function reserve(){
     <title>Document</title>
 </head>
 <body>
-    <form action="test.php" method="POST">
-    <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label" >user</label>
-  <input  class="form-control" id="exampleFormControlInput1" name="user" placeholder="user">
-</div>
-    <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label" >match</label>
-  <input  class="form-control" id="exampleFormControlInput1" name="match" placeholder="match">
-</div>
-    <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label" >stadium</label>
-  <input  class="form-control" id="exampleFormControlInput1" name="stadium" placeholder="stadium">
-</div>
-    <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label" >quantiter</label>
-  <input  class="form-control" id="exampleFormControlInput1" name="quantiter" placeholder="quantiter">
-</div>
-    <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label" >date</label>
-  <input  class="form-control" id="exampleFormControlInput1" name="date" placeholder="date">
-</div>
- <button type="submit" name="add" class="btn btn-primary">submit</button>
-    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while ($row =$save->oneRow()){ ?>
+            <tr>
+                <th scope="row">1</th>
+                <td><img src="../assets/img/<?= $row['image']; ?>" class="card-img-top" alt="Product" class="img-fluid"
+                        height="80" width="70px"></td>
+                <td><?php echo $row['first_team']; ?></td>
+                <td><?php echo $row['second_team']; ?></td>
+                <td><?php echo $row['quantity']; ?></td>
+                <td><?php echo $row['price']; ?></td>
+            </tr>
+
+            <?php } ?>
+        </tbody>
+    </table>
 </body>
 </html>
