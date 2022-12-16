@@ -1,11 +1,4 @@
-<?php
-include('./middlewares/isLoggedin.php');
-// include('./middlewares/isadmin.php');
-require 'controllers/scripts.php';
-$islogedin = new IslogedIn();
-$display = new crud();
-$result=$display->allRows("SELECT * FROM teams");
-?>
+<!-- landing page  -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,11 +10,9 @@ $result=$display->allRows("SELECT * FROM teams");
     <!-- bootstrap and css links  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="admin/assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
      <!-- icon library -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-
    
 </head>
 
@@ -30,7 +21,7 @@ $result=$display->allRows("SELECT * FROM teams");
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid d-flex justify-content-between">
-            <a class="navbar-brand fw-bold ms-5" href="index.php" style="color:#8A1538 ;">YouTickets.com</a>
+            <a class="navbar-brand fw-bold ms-5" href="#" style="color:#8A1538 ;">YouTickets.com</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -43,28 +34,16 @@ $result=$display->allRows("SELECT * FROM teams");
                         <a class="nav-link active me-5 fw-bold" aria-current="page" href="#">News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active me-5 fw-bold" href="allTeams.php">Teams</a>
+                        <a class="nav-link active me-5 fw-bold" href="#">Teams</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active fw-bold" href="#">Contact</a>
                     </li>
                 </ul>
-                <!-- landing page  -->
-                <?php
-                if(isset($_SESSION['logged'])){
-                    echo '<span class="me-5">
-                    <a class="btn-login btn border border-1 me-3" href="logout.php" style="color: #8A1538 ;">Log Out</a>
-                    <a class="btn-signUp  btn btn-danger text-white me-5" href="userprofile.php">Profile</a>
-                    </span>';
-                }else{
-                    echo '<a class="btn-login btn border border-1 me-3" href="login.php" style="color: #8A1538 ;">Log In</a>';
-                    echo '<a class="btn-signUp  btn btn-danger text-white me-5" href="signup.php">Sign Up</a>';
-                }
-                ?>
-                <!-- <span class="me-5">
+                <span class="me-5">
                     <a class="btn-login btn border border-1 me-3" href="#" style="color: #8A1538 ;">Log In</a>
-                    <a class="btn-signUp  btn btn-danger text-white" href="#">Sign Up</a>
-                </span> -->
+                    <a class="btn-signUp  btn btn-danger text-white" href="signout.php">Sign Up</a>
+                </span>
             </div>
         </div>
     </nav>
@@ -72,14 +51,14 @@ $result=$display->allRows("SELECT * FROM teams");
     <!-- header image -->
     <section>
 
-        <img src="admin/assets/img/all/fifa-img.png" class="position-absolute   groups-img img-fluid mx-auto d-block" height="30px" width="100%">
-        <img src="admin/assets/img/all/text-image.png" width="70%" class="position-relative text-image">
-        <div class="searsh input-group border rounded border-4 border-dark">
-            <input type="search" class="form-control rounded-start" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-            <input placeholder="Select date" type="date" class="form-control">
-            <button type="button" class=" btn-search btn  text-white">search</button>
-        </div>
-    </section>
+<img src="assets/img/image.png" class="position-absolute   groups-img img-fluid mx-auto d-block" height="30px" width="100%">
+<img src="admin/assets/img/all/text-image.png" width="70%" class="position-relative text-image">
+<div class="searsh input-group border rounded border-4 border-dark">
+    <input type="search" class="form-control rounded-start" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+    <input placeholder="Select date" type="date" class="form-control">
+    <button type="button" class=" btn-search btn  text-white">search</button>
+</div>
+</section>
 
     <!-- Upcoming Matches -->
     <section class="container">
@@ -174,32 +153,32 @@ $result=$display->allRows("SELECT * FROM teams");
                 </a></button>
             </div>
     </section>
-    <!-- Way To The Final -->
-    <section class="container col-12 d-flex justify-content-center mb-5 ">
-        <img src="assets/img/FINALS.png" class="rounded groups-img img-fluid mx-auto d-block" alt="image">
+
+    <!--  groups  -->
+    <section class="col-12 d-flex justify-content-center bg-danger">
+        <img src="assets/img/FIFA-World-Cup-Qatar-2022-Final-groups.jpg" class="container groups-img img-fluid mx-auto d-block" alt="image">
     </section>
-    
+
     <!--Teams -->
     <section class="container">
         <div class="d-flex justify-content-between mt-4 mb-4">
             <h2>Browse National Teams</h2>
-            <a href="allTeams.php" class="text-danger fs-5 ">View All &#10148</a>
+            <a href="teams.html" class="text-danger fs-5 ">View All &#10148</a>
         </div>
 
-        <div class="row carousel"  data-flickity='{ "freeScroll": true, "contain": true, "prevNextButtons": false, "pageDots": true }'> <!-- Flickity plugin-->
-        <?php foreach ($result as $row) { ?>
-            <div class="col-md-3 carousel-cell">
-                <div class="card mb-4 ">
-                    <img class="card-img-top " height="200" src="admin/assets/img/teams-img/<?php echo $row['image'] ?>" alt="Card image cap">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <img class="card-img-top" src="assets/img/card1.png" alt="Card image cap">
                     <div class="card-body">
-                    <p class="card-text"><?php echo $row['name']?></p>
-                    <p class="card-text fw-light"><?php echo $row['aka']?></p>
-                    <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i><?php echo $row['country']?></p>
+                    <p class="card-text">Morocco National Team</p>
+                    <p class="card-text">Group F</p>
+                    <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>Morocco</p>
                     </div>
                 </div>
             </div>
-            <?php }?>
-            <!-- <div class="col-md-3">
+
+            <div class="col-md-3">
                 <div class="card mb-4">
                     <img class="card-img-top" src="assets/img/card2.png" alt="Card image cap">
                     <div class="card-body">
@@ -230,47 +209,65 @@ $result=$display->allRows("SELECT * FROM teams");
                         <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>Canada</p>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </section>
- <!--  groups  -->
- <section class="col-12 d-flex justify-content-center bg-danger mt-5 mb-5">
-        <img src="admin/assets/img/FIFA-World-Cup-Qatar-2022-Final-groups.jpg" class="container groups-img img-fluid mx-auto d-block" alt="image">
-    </section>
-
-
-
     <!-- Stadiums -->
-    
     <section class="container">
-       
         <div class="d-flex justify-content-between mt-4 mb-4">
             <h2>Browse Available Stadiums</h2>
             <a href="stadiums.html" class="text-danger fs-5 ">View All &#10148</a>
         </div>
-        
 
-            <div class="row carousel"  data-flickity='{ "freeScroll": true, "contain": true, "prevNextButtons": false, "pageDots": true }'>
-            <?php 
-        $display = new crud();
-        $result=$display->allRows("SELECT * FROM stadiums");
-        foreach ($result as $row) { ?>    
-                <div class="col-md-3 carousel-cell">
-                    <div class="card mb-4 "height="auto">
-                        <img class="card-img-top" height="250" src="admin/assets/img/all/<?= $row['image'] ?>" alt="Card image cap">
+            <div class="row mb-4">
+                <div class="col-md-3 ">
+                    <div class="card mb-4">
+                        <img class="card-img-top" src="assets/img/Stad1.png" alt="Card image cap">
                         <div class="card-body">
-                        <p class="card-text"><?= $row['name']?></p>
-                        <p class="card-text">Capacity : <?= $row['capacity']?></p>
-                        <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"> <?= $row['location']?> </i></p>
+                        <p class="card-text">Ahmad Bin Ali Stadium</p>
+                        <p class="card-text">capacity : 45,032 </p>
+                        <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>Next to the Mall of Qatar</p>
                     </div>
                 </div>
             </div>
-        <?php } ?>
-           
-    </section> 
 
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <img class="card-img-top" src="assets/img/Stad2.png" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text">Al Bayt Stadium</p>
+                        <p class="card-text">Capacity : 68,895 </p>
+                        <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>Near Al Khor</p>               
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <img class="card-img-top" src="assets/img/Stad3.png" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text">Al Janoub Stadium</p>
+                        <p class="card-text">Capacity : 44,325 </p>
+                        <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>Al Wakrah</p>                
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-md-3">
+                <div class="card mb-4">
+                    <img class="card-img-top" src="assets/img/Stad4.png" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text">Al Thumama Stadium</p>
+                        <p class="card-text">Capacity : 44,400 </p>
+                        <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>Al Thumama</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
     <!-- footer -->
-    <footer class="bg-danger text-white p-5 mt-5">
+    <footer class="bg-danger text-white p-5 ">
 
 
         <div class="row d-flex justify-content-around">
@@ -297,6 +294,9 @@ $result=$display->allRows("SELECT * FROM teams");
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Affiliate program</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Connectivity partners</a></li>
                     <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Promotions and events</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Integrations</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Community</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Loyalty program</a></li>
                 </ul>
             </div>
 
@@ -316,12 +316,15 @@ $result=$display->allRows("SELECT * FROM teams");
             <div class="col-6 col-md-2  mb-3">
                 <h5>Get the app</h5>
                 <ul class="nav flex-column">
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">YouTicketscom for Android</a>
                     </li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">YouTicketscom for iOS</a></li>
+                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 ">Mobile site</a></li>
                     <button class="btn btn-default me-5  p-0">
-                        <img class="rounded" src="admin/assets/img/all/apple.png" width="100%" />
+                        <img class="rounded" src="assets/img/apple.png" width="100%" />
                     </button>
                     <button class="btn btn-default me-5 mt-3  p-0">
-                        <img class="rounded" src="admin/assets/img/all/googleplay.png" width="100%" />
+                        <img class="rounded" src="assets/img/googleplay.png" width="100%" />
                     </button>
                 </ul>
             </div>
@@ -340,5 +343,5 @@ $result=$display->allRows("SELECT * FROM teams");
             </div>
     </footer>
 </body>
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
 </html>

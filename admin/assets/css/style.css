@@ -45,9 +45,11 @@
         width: 95%;
     }
 }
-.bg-danger{
+
+.bg-danger {
     background-color: #8A1538 !important;
 }
+
 a {
     text-decoration: none
 }
@@ -64,16 +66,21 @@ a {
 .card:hover {
     transform: scale(1.05);
 }
-.login-btn{
-    outline-style: auto;
-outline-width: 0.5px;
-outline-color: #8A1538;
 
+.login-btn {
+    outline-style: auto;
+    outline-width: 0.5px;
+    outline-color: #8A1538;
 }
-.text-danger{
+
+.text-danger {
     color: #8A1538 !important;
 }
-.head-img{
+
+.head-img {
     position: relative;
 }
 
+.card-button {
+    text-decoration: none !important;
+}
