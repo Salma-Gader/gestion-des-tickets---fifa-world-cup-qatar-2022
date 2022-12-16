@@ -1,6 +1,6 @@
 <?php
 include('./middlewares/isLoggedin.php');
-//include('./middlewares/isadmin.php');
+// include('./middlewares/isadmin.php');
 require 'controllers/scripts.php';
 $islogedin = new IslogedIn();
 $display = new crud();

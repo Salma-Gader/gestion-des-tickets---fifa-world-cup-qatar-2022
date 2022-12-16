@@ -16,6 +16,10 @@ class DB{
         }
     }
 
+    function getDb(){
+        return $this->pdo;
+    }
+
     function __destruct()
     {
         if ($this->pdo !== null) {$this->pdo = null;} //return false to close the connection

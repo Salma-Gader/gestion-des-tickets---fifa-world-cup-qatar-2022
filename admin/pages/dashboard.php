@@ -1,4 +1,5 @@
 <?php
+
 //include Userimp.php
 include('../../controllers/Userimp.php');
 include('../../middlewares/isloggedin.php');
@@ -17,4 +18,18 @@ include'../layouts/footer.php';
     //if the user is not admin redirect to index.php
 //     header('location: ../../../../index.php');
 // }
+
+
+function countTeams($table) 
+{  
+   $database= new DB();
+   $sql= "SELECT COUNT(id) FROM $table";
+   $stm = $database->getDb()->prepare($sql);
+   $stm->execute();
+   $dbstm=$stm->fetchAll(PDO::FETCH_ASSOC);
+    
+    return $dbstm;
+    
+}
+
 ?>
