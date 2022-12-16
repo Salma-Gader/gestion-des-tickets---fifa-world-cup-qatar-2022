@@ -6,9 +6,11 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total number of matches played</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total number of Teams</p>
                     <h5 class="font-weight-bolder mb-0">
-                      39
+                    <?php $countTeam = countTeams("teams");
+                    echo $countTeam[0]["COUNT(id)"]
+                    ?>
                       <!-- <span class="text-success text-sm font-weight-bolder">+5%</span> -->
                     </h5>
                   </div>
@@ -28,10 +30,11 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total number of registered viewers</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total number of Stadiums</p>
                     <h5 class="font-weight-bolder mb-0">
-                      2,300
-                      <!-- <span class="text-success text-sm font-weight-bolder">+3%</span> -->
+                    <?php $countTeam = countTeams("stadiums");
+                    echo $countTeam[0]["COUNT(id)"]
+                    ?>
                     </h5>
                   </div>
                 </div>
@@ -50,9 +53,11 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total number of e-tickets available</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total number of Matches</p>
                     <h5 class="font-weight-bolder mb-0">
-                      5731
+                    <?php $countTeam = countTeams("matches");
+                    echo $countTeam[0]["COUNT(id)"]
+                    ?>
                       <!-- <span class="text-danger text-sm font-weight-bolder">-2%</span> -->
                     </h5>
                   </div>
@@ -72,9 +77,11 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total number of e-tickets reserved</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total number of Users</p>
                     <h5 class="font-weight-bolder mb-0">
-                      20000
+                    <?php $countTeam = countTeams("users");
+                    echo $countTeam[0]["COUNT(id)"]
+                    ?>
                       <!-- <span class="text-success text-sm font-weight-bolder">+5%</span> -->
                     </h5>
                   </div>
@@ -88,27 +95,6 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-4 col-sm-6 mb-3">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total number of remaining e-tickets</p>
-                    <h5 class="font-weight-bolder mb-0">
-                      2,300
-                      <!-- <span class="text-success text-sm font-weight-bolder">+3%</span> -->
-                    </h5>
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                    <i class="fa-regular fa-futbol" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      
       </div>
     </div>

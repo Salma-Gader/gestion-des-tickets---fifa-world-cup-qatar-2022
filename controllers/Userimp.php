@@ -155,7 +155,7 @@ class Userimp extends DB implements user
                 $stmt->bindParam(':password', $this->password);
                 if ($stmt->execute()) {
                     $msg = 'Click on the activation link to verify your email. <br><br>
-                        <a href="http://localhost/gestion-des-tickets-fifa-world-cup-qatar-2022/verifytoken.php?token=' . $this->token . '"> Click here to verify email</a>
+                        <a href="http://localhost/Sprint-3/fifa/verifytoken.php?token=' . $this->token . '"> Click here to verify email</a>
                     ';
                     require './PHPMailer/src/Exception.php';
                     require './PHPMailer/src/PHPMailer.php';
@@ -244,10 +244,10 @@ class Userimp extends DB implements user
                         $_SESSION['logged'] = true;
                         //check if its admin or user and redirect to the right page
                         if ($_SESSION['isadmin'] == 1) {
-                            header('location:./pages/dashboard.php');
+                            header('location: admin/pages/dashboard.php');
                     }
                         if ($_SESSION['isadmin'] == 0) {
-                            header('location:./index.php');
+                            header('location: index.php');
                     }
                     }
 
@@ -293,7 +293,7 @@ class Userimp extends DB implements user
             $stmt->bindParam(':token', $this->token);
             if ($stmt->execute()) {
                 $msg = 'Click on the link to reset your password. <br><br>
-                    <a href="http://localhost/gestion-des-tickets-fifa-world-cup-qatar-2022/newpassword.php?token=' . $this->token . '"> Click here to reset password</a>
+                    <a href="http://localhost/Sprint-3/fifa/newpassword.php?token=' . $this->token . '"> Click here to reset password</a>
                 ';
                 require './PHPMailer/src/Exception.php';
                 require './PHPMailer/src/PHPMailer.php';
