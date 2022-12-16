@@ -67,13 +67,12 @@ $result=$display->allRows("SELECT * FROM stadiums");
     <div class="modal fade" id="modal-stadium">
       <div class="modal-dialog">
         <div class="modal-content">
-          <form action="../../controllers/stadiums.class.php" method="POST" id="form-task" enctype="multipart/form-data">
+          <form action="../../controllers/stadiums.class.php" method="POST" enctype="multipart/form-data">
             <div class="modal-header">
               <h5 class="modal-title">Add a stadium</h5>
               <a href="#" class="btn-close" data-bs-dismiss="modal"></a>
             </div>
             <div class="modal-body">
-              <input type="hidden" id="">
               <div class="mb-3">
                 <label class="form-label">Name</label>
                 <input type="text" name="name" class="form-control" />
@@ -98,7 +97,7 @@ $result=$display->allRows("SELECT * FROM stadiums");
             </div>
             <div class="modal-footer">
               <a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
-              <button type="submit" name="save" class="btn btn-primary task-action-btn" id="task-save-btn">Save</button>
+              <button type="submit" name="save" class="btn btn-primary task-action-btn">Save</button>
             </div>
           </form>
         </div>
