@@ -66,91 +66,92 @@
             <h2>Upcoming Matchs</h2>
             <a href="#" class="text-danger fs-5 ">View All &#10148</a>
         </div>
-        <form action="#" method="GET">
-        <div class="row pb-5">
-            <div class="col-md-3">
-            <a href="test.php" class="text-dark" name="match">
-                <div class="card mb-4">
-                    <img class="card-img-top" src="assets/img/SaudiMexico.webp" alt="Card image cap">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-around">
-                            <div class="me-3">
-                                <p>NOV</p>
-                                <p class="ms-2">23</p>
-                            </div>
-                            <div>
-                                <p class="card-text">Saudi Arabia V Mexico</p>
-                                <p class="card-text">180 $</p>
-                                <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>947 Stadium</p>                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </a>
-            </div>
-            
-            <div class="col-md-3">
-            <a href="test.php" class="text-dark" name="match">
-                <div class="card mb-4">
-                    <img class="card-img-top" src="assets/img/PolandArgentina.webp" alt="Card image cap">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-around">
-                            <div class="me-3">
-                                <p>NOV</p>
-                                <p class="ms-2">23</p>
-                            </div>
-                            <div>
-                                <p class="card-text">Poland V Argentina</p>
-                                <p class="card-text">225 $</p>
-                                <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>947 Stadium</p>                
+        <form action="reservation.php" method="GET">
+            <div class="row pb-5">
+                <div class="col-md-3">
+               <button class="card-button btn btn-link" name="match"><a class="text-dark" > 
+                <input type="hidden"  name="matchId" value="1">
+                    <div class="card mb-4">
+                        <img class="card-img-top" src="assets/img/SaudiMexico.webp" alt="Card image cap">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-around">
+                                <div class="me-3">
+                                    <p>NOV</p>
+                                    <p class="ms-2">23</p>
+                                </div>
+                                <div>
+                                    <p class="card-text">Saudi Arabia V Mexico</p>
+                                    <p class="card-text">180 $</p>
+                                    <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>947 Stadium</p>                
+                                </div>
                             </div>
                         </div>
                     </div>
+                    </a></button>
                 </div>
-                </a>
-            </div>
-            </form>
-            <div class="col-md-3">
-            <a href="test.php" class="text-dark" name="match">
-                <div class="card mb-4">
-                    <img class="card-img-top" src="assets/img/AustraliDenmark.webp" alt="Card image cap">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-around">
-                            <div class="me-3">
-                                <p>NOV</p>
-                                <p class="ms-2">23</p>
-                            </div>
-                            <div>
-                                <p class="card-text">Australia V Denmark</p>
-                                <p class="card-text">197 $</p>
-                                <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>Al Janoub st</p>                
+                
+                <div class="col-md-3">
+                <button class="card-button btn btn-link" name="match"><a class="text-dark">
+                    <div class="card mb-4">
+                        <img class="card-img-top" src="assets/img/PolandArgentina.webp" alt="Card image cap">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-around">
+                                <div class="me-3">
+                                    <p>NOV</p>
+                                    <p class="ms-2">23</p>
+                                </div>
+                                <div>
+                                    <p class="card-text">Poland Vs Argentina</p>
+                                    <p class="card-text">225 $</p>
+                                    <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>947 Stadium</p>                
+                                </div>
                             </div>
                         </div>
                     </div>
+                    </a></button>
                 </div>
-                </a>
-            </div>
+                </form>
+                <div class="col-md-3">
+                <button class="card-button btn btn-link" name="match"><a class="text-dark">
+                    <div class="card mb-4">
+                        <img class="card-img-top" src="assets/img/AustraliDenmark.webp" alt="Card image cap">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-around">
+                                <div class="me-3">
+                                    <p>NOV</p>
+                                    <p class="ms-2">23</p>
+                                </div>
+                                <div>
+                                    <p class="card-text">Australia V Denmark</p>
+                                    <p class="card-text">197 $</p>
+                                    <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>Al Janoub st</p>                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a></button>
+                </div>
 
-            <div class="col-md-3">
-            <a href="test.php" class="text-dark" name="match">
-                <div class="card mb-4">
-                    <img class="card-img-top" src="assets/img/TunisieFrance.webp" alt="Card image cap">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-around">
-                            <div class="me-3">
-                                <p>NOV</p>
-                                <p class="ms-2">23</p>
-                            </div> 
-                            <div>
-                        <p class="card-text">Tunisie V France</p>
-                        <p class="card-text">221 $</p>
-                        <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>Education City Stadium</p>
+                <div class="col-md-3">
+                <button class="card-button btn btn-link" name="match"><a class="text-dark" >
+                    <div class="card mb-4">
+                        <img class="card-img-top" src="assets/img/TunisieFrance.webp" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-around">
+                                <div class="me-3">
+                                    <p>NOV</p>
+                                    <p class="ms-2">23</p>
+                                </div> 
+                                <div>
+                            <p class="card-text">Tunisie V France</p>
+                            <p class="card-text">221 $</p>
+                            <p class="card-text"><i class="fa fa-map-marker me-2" aria-hidden="true"></i>Education City Stadium</p>
+                        </div>
+                    </div>
                     </div>
                 </div>
-                </div>
+                </a></button>
             </div>
-            </a>
-        </div>
     </section>
 
     <!--  groups  -->

@@ -111,3 +111,11 @@ a {
 .border-danger {
     border-color: #8C1638!important;
 }
+
+.card-button {
+    text-decoration: none !important;
+}
+
+.btn-reserv {
+    border: none !important;
+}
